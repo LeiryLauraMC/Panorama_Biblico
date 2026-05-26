@@ -1,0 +1,1923 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panorama Bíblico — Iglesia Gosén</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FAF7F2;
+    --white-warm: #F5F1EA;
+    --beige: #EDE8DF;
+    --card-bg: #FDFBF8;
+    --accent-terra: #B5824A;
+    --accent-mustard: #C9973E;
+    --accent-sage: #8A9E7E;
+    --accent-clay: #C4785A;
+    --text-dark: #2D2D2D;
+    --text-mid: #5A5550;
+    --text-light: #8E8880;
+    --border-soft: rgba(180,160,130,0.18);
+    --shadow-soft: 0 2px 18px rgba(100,80,50,0.07), 0 1px 4px rgba(100,80,50,0.04);
+    --shadow-card: 0 4px 32px rgba(100,80,50,0.09), 0 1px 6px rgba(100,80,50,0.05);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    line-height: 1.7;
+    font-size: 15px;
+  }
+
+  /* ── SIDEBAR ── */
+  .layout { display: flex; min-height: 100vh; }
+
+  .sidebar {
+    width: 260px;
+    min-width: 260px;
+    background: var(--white-warm);
+    border-right: 1px solid var(--border-soft);
+    padding: 40px 0 40px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .sidebar-logo {
+    padding: 0 28px 32px;
+    border-bottom: 1px solid var(--border-soft);
+    margin-bottom: 24px;
+  }
+
+  .sidebar-logo .church-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--accent-terra);
+    letter-spacing: 0.01em;
+  }
+
+  .sidebar-logo .course-name {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-light);
+    margin-top: 4px;
+  }
+
+  .nav-section-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--text-light);
+    padding: 0 28px 8px;
+    margin-top: 16px;
+  }
+
+  .nav-link {
+    display: block;
+    padding: 9px 28px;
+    font-size: 13.5px;
+    color: var(--text-mid);
+    text-decoration: none;
+    transition: all 0.18s ease;
+    border-left: 2px solid transparent;
+  }
+
+  .nav-link:hover, .nav-link.active {
+    color: var(--accent-terra);
+    background: rgba(181,130,74,0.07);
+    border-left-color: var(--accent-terra);
+  }
+
+  .nav-link.sub {
+    padding-left: 40px;
+    font-size: 12.5px;
+    color: var(--text-light);
+  }
+
+  .nav-link.sub:hover {
+    color: var(--accent-mustard);
+    background: rgba(201,151,62,0.06);
+    border-left-color: var(--accent-mustard);
+  }
+
+  /* ── MAIN CONTENT ── */
+  .main {
+    flex: 1;
+    min-width: 0;
+    padding: 56px 64px;
+    max-width: 960px;
+  }
+
+  /* ── SECTION TRANSITIONS ── */
+  .page-section {
+    display: none;
+    animation: fadeIn 0.3s ease;
+  }
+  .page-section.active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── TYPOGRAPHY ── */
+  .page-eyebrow {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--accent-terra);
+    margin-bottom: 12px;
+  }
+
+  h1.page-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 600;
+    color: var(--text-dark);
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+
+  h2.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 500;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+    margin-top: 48px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-soft);
+  }
+
+  h3.book-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+  }
+
+  h3.sub-section {
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent-terra);
+    margin-bottom: 12px;
+    margin-top: 28px;
+  }
+
+  .page-intro {
+    font-size: 16px;
+    color: var(--text-mid);
+    line-height: 1.8;
+    max-width: 680px;
+    margin-bottom: 40px;
+    border-left: 2px solid var(--accent-terra);
+    padding-left: 20px;
+  }
+
+  p { margin-bottom: 14px; color: var(--text-mid); }
+  p:last-child { margin-bottom: 0; }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 28px 32px;
+    box-shadow: var(--shadow-card);
+    margin-bottom: 20px;
+    border: 1px solid var(--border-soft);
+  }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .card-grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .card.small {
+    padding: 20px 24px;
+  }
+
+  /* ── BOOK META ── */
+  .book-number {
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--accent-mustard);
+    margin-bottom: 4px;
+  }
+
+  .book-subtitle {
+    font-size: 12px;
+    color: var(--text-light);
+    font-style: italic;
+    margin-bottom: 16px;
+    font-family: 'Playfair Display', serif;
+  }
+
+  .meta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .meta-item { }
+  .meta-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-light);
+    margin-bottom: 2px;
+  }
+  .meta-value {
+    font-size: 13px;
+    color: var(--text-dark);
+  }
+
+  .verse-block {
+    background: var(--beige);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-top: 14px;
+    border-left: 3px solid var(--accent-terra);
+  }
+
+  .verse-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent-terra);
+    margin-bottom: 4px;
+  }
+
+  .verse-text {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 13.5px;
+    color: var(--text-dark);
+    line-height: 1.6;
+  }
+
+  .detail-section {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border-soft);
+  }
+
+  .detail-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-light);
+    margin-bottom: 4px;
+  }
+
+  .detail-text {
+    font-size: 13px;
+    color: var(--text-mid);
+    line-height: 1.65;
+  }
+
+  /* ── ACCORDION ── */
+  .accordion { margin-bottom: 10px; }
+
+  .accordion-trigger {
+    width: 100%;
+    background: var(--card-bg);
+    border: 1px solid var(--border-soft);
+    border-radius: 10px;
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.18s ease;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .accordion-trigger:hover {
+    background: var(--white-warm);
+    border-color: rgba(181,130,74,0.25);
+  }
+
+  .accordion-trigger.open {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-color: rgba(181,130,74,0.3);
+    background: var(--white-warm);
+  }
+
+  .accordion-trigger-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .acc-num {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--accent-mustard);
+    min-width: 28px;
+  }
+
+  .acc-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    color: var(--text-dark);
+  }
+
+  .acc-subtitle {
+    font-size: 12px;
+    color: var(--text-light);
+    font-style: italic;
+    margin-left: 4px;
+  }
+
+  .acc-arrow {
+    font-size: 11px;
+    color: var(--text-light);
+    transition: transform 0.2s ease;
+  }
+
+  .accordion-trigger.open .acc-arrow { transform: rotate(180deg); }
+
+  .accordion-body {
+    display: none;
+    background: var(--card-bg);
+    border: 1px solid rgba(181,130,74,0.3);
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    padding: 24px 28px;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .accordion-body.open { display: block; }
+
+  /* ── TABLE ── */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-top: 16px;
+  }
+
+  .data-table th {
+    text-align: left;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-light);
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border-soft);
+    font-weight: 500;
+  }
+
+  .data-table td {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--border-soft);
+    color: var(--text-mid);
+    vertical-align: top;
+  }
+
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr:hover td { background: rgba(181,130,74,0.04); }
+
+  /* ── BADGES ── */
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+  }
+
+  .badge-terra { background: rgba(181,130,74,0.12); color: var(--accent-terra); }
+  .badge-sage { background: rgba(138,158,126,0.15); color: #5d7a54; }
+  .badge-clay { background: rgba(196,120,90,0.12); color: var(--accent-clay); }
+  .badge-mustard { background: rgba(201,151,62,0.12); color: #9a6e1a; }
+
+  /* ── STAT CARDS ── */
+  .stat-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 24px;
+    border: 1px solid var(--border-soft);
+    box-shadow: var(--shadow-soft);
+    text-align: center;
+  }
+
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 38px;
+    font-weight: 600;
+    color: var(--accent-terra);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-label {
+    font-size: 12px;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  /* ── ATTENDANCE ── */
+  .attendance-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  .student-list { display: flex; flex-direction: column; gap: 10px; }
+
+  .student-row {
+    display: flex;
+    align-items: center;
+    background: var(--card-bg);
+    border: 1px solid var(--border-soft);
+    border-radius: 10px;
+    padding: 14px 20px;
+    gap: 16px;
+    box-shadow: var(--shadow-soft);
+    transition: all 0.15s ease;
+  }
+
+  .student-row:hover { border-color: rgba(181,130,74,0.25); }
+
+  .student-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--beige);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--accent-terra);
+    flex-shrink: 0;
+  }
+
+  .student-name {
+    flex: 1;
+    font-size: 14px;
+    color: var(--text-dark);
+  }
+
+  .attendance-dots { display: flex; gap: 6px; align-items: center; }
+
+  .att-dot {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border-soft);
+    background: var(--cream);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    color: var(--text-light);
+    transition: all 0.15s ease;
+    position: relative;
+  }
+
+  .att-dot:hover { border-color: var(--accent-terra); }
+
+  .att-dot.present {
+    background: rgba(138,158,126,0.25);
+    border-color: var(--accent-sage);
+    color: #5d7a54;
+  }
+
+  .att-dot.absent {
+    background: rgba(196,120,90,0.12);
+    border-color: var(--accent-clay);
+    color: var(--accent-clay);
+  }
+
+  .att-dot.excused {
+    background: rgba(201,151,62,0.12);
+    border-color: var(--accent-mustard);
+    color: #9a6e1a;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 18px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    transition: all 0.18s ease;
+  }
+
+  .btn-primary {
+    background: var(--accent-terra);
+    color: white;
+  }
+  .btn-primary:hover { background: #a06e38; }
+
+  .btn-outline {
+    background: transparent;
+    border: 1.5px solid var(--border-soft);
+    color: var(--text-mid);
+  }
+  .btn-outline:hover { border-color: var(--accent-terra); color: var(--accent-terra); }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--text-light);
+    padding: 6px 10px;
+  }
+  .btn-ghost:hover { color: var(--accent-terra); background: rgba(181,130,74,0.07); }
+
+  /* ── CLASS PREP ── */
+  .class-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    border: 1px solid var(--border-soft);
+    box-shadow: var(--shadow-card);
+    margin-bottom: 16px;
+    overflow: hidden;
+  }
+
+  .class-card-header {
+    padding: 20px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border-soft);
+    cursor: pointer;
+  }
+
+  .class-card-header:hover { background: var(--white-warm); }
+
+  .class-card-body { padding: 24px 28px; }
+
+  .prep-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 16px;
+  }
+
+  .prep-block {
+    background: var(--cream);
+    border-radius: 8px;
+    padding: 16px 18px;
+    border: 1px solid var(--border-soft);
+  }
+
+  .prep-block-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-light);
+    margin-bottom: 8px;
+  }
+
+  textarea.prep-notes {
+    width: 100%;
+    background: transparent;
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: var(--text-dark);
+    resize: vertical;
+    min-height: 80px;
+    outline: none;
+    line-height: 1.65;
+  }
+
+  textarea.prep-notes::placeholder { color: var(--text-light); }
+
+  /* ── CLASSIFICATION TABLE ── */
+  .classification-block {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 28px 32px;
+    border: 1px solid var(--border-soft);
+    box-shadow: var(--shadow-card);
+    margin-bottom: 16px;
+  }
+
+  .classification-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .class-count {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    background: var(--beige);
+    color: var(--text-light);
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 400;
+  }
+
+  .book-chips { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 8px; }
+
+  .book-chip {
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 16px;
+    background: var(--beige);
+    color: var(--text-mid);
+    border: 1px solid var(--border-soft);
+  }
+
+  /* ── INTRO HERO ── */
+  .hero-block {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 44px 48px;
+    border: 1px solid var(--border-soft);
+    box-shadow: var(--shadow-card);
+    margin-bottom: 36px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-block::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 180px; height: 180px;
+    background: radial-gradient(circle, rgba(181,130,74,0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    transform: translate(40%, -40%);
+  }
+
+  .hero-quote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--text-dark);
+    line-height: 1.65;
+    margin-bottom: 8px;
+  }
+
+  .hero-quote-ref {
+    font-size: 12px;
+    color: var(--accent-terra);
+    letter-spacing: 0.06em;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border-soft);
+    margin: 36px 0;
+  }
+
+  /* ── LEGEND ── */
+  .legend { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-light); }
+  .legend-dot { width: 12px; height: 12px; border-radius: 50%; }
+  .legend-dot.present { background: var(--accent-sage); }
+  .legend-dot.absent { background: var(--accent-clay); }
+  .legend-dot.excused { background: var(--accent-mustard); }
+  .legend-dot.none { background: var(--beige); border: 1px solid var(--border-soft); }
+
+  /* ── PERIOD TAGS ── */
+  .period-tag {
+    font-size: 10.5px;
+    padding: 2px 9px;
+    border-radius: 4px;
+    background: rgba(181,130,74,0.1);
+    color: var(--accent-terra);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── HIGHLIGHT BOX ── */
+  .highlight-box {
+    background: linear-gradient(135deg, rgba(181,130,74,0.08), rgba(201,151,62,0.05));
+    border: 1px solid rgba(181,130,74,0.2);
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin: 18px 0;
+  }
+
+  /* ── NOTA FINAL ── */
+  .nota-final {
+    background: var(--white-warm);
+    border-radius: 12px;
+    padding: 32px 36px;
+    border: 1px solid var(--border-soft);
+    margin-top: 40px;
+  }
+
+  /* ── PROGRESS BAR ── */
+  .progress-bar-wrap {
+    background: var(--beige);
+    border-radius: 4px;
+    height: 6px;
+    overflow: hidden;
+    margin-top: 6px;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    background: linear-gradient(90deg, var(--accent-terra), var(--accent-mustard));
+    transition: width 0.4s ease;
+  }
+
+  /* ── INPUT ── */
+  input[type="text"], input[type="date"], select {
+    background: var(--cream);
+    border: 1.5px solid var(--border-soft);
+    border-radius: 8px;
+    padding: 9px 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: var(--text-dark);
+    outline: none;
+    transition: border-color 0.15s;
+  }
+  input[type="text"]:focus, input[type="date"]:focus, select:focus {
+    border-color: var(--accent-terra);
+  }
+
+  /* ── TAG FILTER ── */
+  .filter-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+  .filter-btn {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    border: 1.5px solid var(--border-soft);
+    background: var(--card-bg);
+    color: var(--text-mid);
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .filter-btn:hover, .filter-btn.active {
+    background: var(--accent-terra);
+    border-color: var(--accent-terra);
+    color: white;
+  }
+
+  /* ── TOOLTIP ── */
+  .tooltip-wrap { position: relative; display: inline-block; }
+  .tooltip {
+    display: none;
+    position: absolute;
+    bottom: 36px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--text-dark);
+    color: white;
+    font-size: 11px;
+    padding: 5px 9px;
+    border-radius: 5px;
+    white-space: nowrap;
+    z-index: 10;
+  }
+  .tooltip-wrap:hover .tooltip { display: block; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .sidebar { display: none; }
+    .main { padding: 32px 24px; }
+    .card-grid, .card-grid-3 { grid-template-columns: 1fr; }
+    .prep-grid { grid-template-columns: 1fr; }
+    h1.page-title { font-size: 30px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="layout">
+  <!-- ── SIDEBAR ── -->
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <div class="church-name">Iglesia Gosén</div>
+      <div class="course-name">Panorama Bíblico</div>
+    </div>
+
+    <span class="nav-section-label">General</span>
+    <a href="#" class="nav-link active" onclick="showSection('inicio')">Inicio</a>
+    <a href="#" class="nav-link" onclick="showSection('fundamentos')">Fundamentos</a>
+    <a href="#" class="nav-link" onclick="showSection('historia')">Historia y Evidencias</a>
+    <a href="#" class="nav-link" onclick="showSection('autores')">Autores y Geografía</a>
+    <a href="#" class="nav-link" onclick="showSection('mundo')">La Biblia en el Mundo</a>
+    <a href="#" class="nav-link" onclick="showSection('espiritual')">Fundamento Espiritual</a>
+
+    <span class="nav-section-label">Antiguo Testamento</span>
+    <a href="#" class="nav-link" onclick="showSection('at-intro')">Introducción AT</a>
+    <a href="#" class="nav-link sub" onclick="showSection('at-pentateuco')">Pentateuco</a>
+    <a href="#" class="nav-link sub" onclick="showSection('at-historicos')">Libros Históricos</a>
+    <a href="#" class="nav-link sub" onclick="showSection('at-poeticos')">Libros Poéticos</a>
+    <a href="#" class="nav-link sub" onclick="showSection('at-profetas-mayores')">Profetas Mayores</a>
+    <a href="#" class="nav-link sub" onclick="showSection('at-profetas-menores')">Profetas Menores</a>
+
+    <span class="nav-section-label">Nuevo Testamento</span>
+    <a href="#" class="nav-link" onclick="showSection('nt-intro')">Introducción NT</a>
+    <a href="#" class="nav-link sub" onclick="showSection('nt-evangelios')">Evangelios</a>
+    <a href="#" class="nav-link sub" onclick="showSection('nt-hechos')">Hechos</a>
+    <a href="#" class="nav-link sub" onclick="showSection('nt-paulinas')">Epístolas Paulinas</a>
+    <a href="#" class="nav-link sub" onclick="showSection('nt-generales')">Epístolas Generales</a>
+    <a href="#" class="nav-link sub" onclick="showSection('nt-apocalipsis')">Apocalipsis</a>
+
+    <span class="nav-section-label">Gestión del Curso</span>
+    <a href="#" class="nav-link" onclick="showSection('asistencia')">Asistencia</a>
+    <a href="#" class="nav-link" onclick="showSection('clases')">Preparación de Clases</a>
+  </nav>
+
+  <!-- ── MAIN ── -->
+  <main class="main">
+
+    <!-- ══ INICIO ══ -->
+    <section id="inicio" class="page-section active">
+      <div class="page-eyebrow">Iglesia Comunidad Cristiana Gosén</div>
+      <h1 class="page-title">Panorama Bíblico</h1>
+
+      <div class="hero-block">
+        <div class="hero-quote">"Toda la Escritura es inspirada por Dios, y útil para enseñar, para redargüir, para corregir, para instruir en justicia."</div>
+        <div class="hero-quote-ref">2 Timoteo 3:16</div>
+      </div>
+
+      <div class="card-grid-3">
+        <div class="stat-card">
+          <div class="stat-number">66</div>
+          <div class="stat-label">Libros en total</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">39</div>
+          <div class="stat-label">Antiguo Testamento</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">27</div>
+          <div class="stat-label">Nuevo Testamento</div>
+        </div>
+      </div>
+
+      <h2 class="section-title">Clasificación del Antiguo Testamento</h2>
+      <div class="classification-block">
+        <div class="classification-title">Pentateuco <span class="class-count">5 libros</span></div>
+        <div class="book-chips">
+          <span class="book-chip">Génesis</span><span class="book-chip">Éxodo</span><span class="book-chip">Levítico</span><span class="book-chip">Números</span><span class="book-chip">Deuteronomio</span>
+        </div>
+      </div>
+      <div class="classification-block">
+        <div class="classification-title">Libros Históricos <span class="class-count">12 libros</span></div>
+        <div class="book-chips">
+          <span class="book-chip">Josué</span><span class="book-chip">Jueces</span><span class="book-chip">Rut</span><span class="book-chip">1 Samuel</span><span class="book-chip">2 Samuel</span><span class="book-chip">1 Reyes</span><span class="book-chip">2 Reyes</span><span class="book-chip">1 Crónicas</span><span class="book-chip">2 Crónicas</span><span class="book-chip">Esdras</span><span class="book-chip">Nehemías</span><span class="book-chip">Ester</span>
+        </div>
+      </div>
+      <div class="classification-block">
+        <div class="classification-title">Libros Poéticos y Sapienciales <span class="class-count">5 libros</span></div>
+        <div class="book-chips">
+          <span class="book-chip">Job</span><span class="book-chip">Salmos</span><span class="book-chip">Proverbios</span><span class="book-chip">Eclesiastés</span><span class="book-chip">Cantares</span>
+        </div>
+      </div>
+      <div class="classification-block">
+        <div class="classification-title">Profetas Mayores <span class="class-count">5 libros</span></div>
+        <div class="book-chips">
+          <span class="book-chip">Isaías</span><span class="book-chip">Jeremías</span><span class="book-chip">Lamentaciones</span><span class="book-chip">Ezequiel</span><span class="book-chip">Daniel</span>
+        </div>
+      </div>
+      <div class="classification-block">
+        <div class="classification-title">Profetas Menores <span class="class-count">12 libros</span></div>
+        <div class="book-chips">
+          <span class="book-chip">Oseas</span><span class="book-chip">Joel</span><span class="book-chip">Amós</span><span class="book-chip">Abdías</span><span class="book-chip">Jonás</span><span class="book-chip">Miqueas</span><span class="book-chip">Nahúm</span><span class="book-chip">Habacuc</span><span class="book-chip">Sofonías</span><span class="book-chip">Hageo</span><span class="book-chip">Zacarías</span><span class="book-chip">Malaquías</span>
+        </div>
+      </div>
+
+      <h2 class="section-title">Clasificación del Nuevo Testamento</h2>
+      <div class="classification-block">
+        <div class="classification-title">Evangelios <span class="class-count">4 libros</span></div>
+        <div class="book-chips">
+          <span class="book-chip">Mateo</span><span class="book-chip">Marcos</span><span class="book-chip">Lucas</span><span class="book-chip">Juan</span>
+        </div>
+      </div>
+      <div class="classification-block">
+        <div class="classification-title">Historia de la Iglesia <span class="class-count">1 libro</span></div>
+        <div class="book-chips">
+          <span class="book-chip">Hechos de los Apóstoles</span>
+        </div>
+      </div>
+      <div class="classification-block">
+        <div class="classification-title">Epístolas Paulinas <span class="class-count">13 libros</span></div>
+        <div class="book-chips">
+          <span class="book-chip">Romanos</span><span class="book-chip">1 Corintios</span><span class="book-chip">2 Corintios</span><span class="book-chip">Gálatas</span><span class="book-chip">Efesios</span><span class="book-chip">Filipenses</span><span class="book-chip">Colosenses</span><span class="book-chip">1 Tesalonicenses</span><span class="book-chip">2 Tesalonicenses</span><span class="book-chip">1 Timoteo</span><span class="book-chip">2 Timoteo</span><span class="book-chip">Tito</span><span class="book-chip">Filemón</span>
+        </div>
+      </div>
+      <div class="classification-block">
+        <div class="classification-title">Epístolas Generales <span class="class-count">8 libros</span></div>
+        <div class="book-chips">
+          <span class="book-chip">Hebreos</span><span class="book-chip">Santiago</span><span class="book-chip">1 Pedro</span><span class="book-chip">2 Pedro</span><span class="book-chip">1 Juan</span><span class="book-chip">2 Juan</span><span class="book-chip">3 Juan</span><span class="book-chip">Judas</span>
+        </div>
+      </div>
+      <div class="classification-block">
+        <div class="classification-title">Profecía Apocalíptica <span class="class-count">1 libro</span></div>
+        <div class="book-chips">
+          <span class="book-chip">Apocalipsis</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ FUNDAMENTOS ══ -->
+    <section id="fundamentos" class="page-section">
+      <div class="page-eyebrow">Parte I</div>
+      <h1 class="page-title">Fundamentos</h1>
+      <p class="page-intro">Bases conceptuales sobre la naturaleza, composición e idiomas de las Escrituras.</p>
+
+      <h2 class="section-title">1. ¿Qué significa la palabra Biblia?</h2>
+      <div class="card">
+        <p>La palabra Biblia proviene del griego Biblia (Βιβλία), plural de Biblion (Βιβλίον), que significa literalmente "los libros" o "la colección de libros". Deriva de Byblos, nombre de la ciudad fenicia célebre por exportar papiros, el material de escritura de la antigüedad. San Juan Crisóstomo (siglo IV d.C.) fue uno de los primeros en usar el plural Biblia para designar las Escrituras como un todo unificado y sagrado.</p>
+        <div class="highlight-box" style="margin-top:14px;">
+          <div class="meta-label" style="margin-bottom:6px;">Nota importante</div>
+          <p style="margin:0; font-size:13px;">Aunque la Biblia es una colección de 66 libros escritos por aproximadamente 40 autores a lo largo de 1,500 años, los creyentes la reconocemos como un solo libro con un mensaje central y coherente: la redención de la humanidad a través de Jesucristo — el hilo conductor desde Génesis hasta Apocalipsis.</p>
+        </div>
+        <div class="verse-block">
+          <div class="verse-label">Juan 1:1</div>
+          <div class="verse-text">"En el principio era el Verbo, y el Verbo era con Dios, y el Verbo era Dios."</div>
+        </div>
+      </div>
+
+      <h2 class="section-title">2. ¿Cuántos libros tiene la Biblia y cómo se dividen?</h2>
+      <div class="card">
+        <p>El canon protestante evangélico reconoce 66 libros inspirados, divididos en dos grandes pactos:</p>
+        <table class="data-table" style="margin-top:16px;">
+          <thead>
+            <tr>
+              <th>Sección</th>
+              <th>Libros</th>
+              <th>Idioma Original</th>
+              <th>Contenido Central</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Antiguo Testamento</td>
+              <td>39</td>
+              <td>Hebreo y algo de arameo</td>
+              <td>Creación, caída, pueblo de Israel, ley, profetas y promesas mesiánicas</td>
+            </tr>
+            <tr>
+              <td>Nuevo Testamento</td>
+              <td>27</td>
+              <td>Griego koiné</td>
+              <td>Vida de Cristo, nacimiento de la iglesia, epístolas y profecía final</td>
+            </tr>
+            <tr>
+              <td>Total</td>
+              <td>66</td>
+              <td>3 idiomas</td>
+              <td>Un solo mensaje de redención</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="highlight-box" style="margin-top:14px;">
+          <p style="margin:0; font-size:13px;">Los libros deuterocanónicos (Apócrifos) son aceptados por la Iglesia Católica Romana y la Ortodoxa, pero no forman parte del canon evangélico protestante. Seguimos el canon hebreo del AT (Tanaj) y el canon del NT ratificado en los concilios de Hipona (393 d.C.) y Cartago (397 d.C.).</p>
+        </div>
+      </div>
+
+      <h2 class="section-title">4. Idiomas en que fue escrita la Biblia</h2>
+      <div class="card">
+        <table class="data-table">
+          <thead>
+            <tr><th>Idioma</th><th>Porción</th><th>Características principales</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong style="font-weight:500;">Hebreo Antiguo</strong></td>
+              <td>AT ~95%</td>
+              <td>Lengua semítica; escritura de derecha a izquierda; originalmente sin vocales escritas. Los Masoretas (s. VI-X d.C.) añadieron signos vocálicos para preservar la pronunciación exacta.</td>
+            </tr>
+            <tr>
+              <td><strong style="font-weight:500;">Arameo Bíblico</strong></td>
+              <td>AT ~1%</td>
+              <td>Lengua semítica hermana del hebreo; lengua franca del Oriente Medio. Aparece en Esdras 4:8-6:18; Daniel 2:4-7:28 y en palabras de Jesús: "Talita cumi" (Mc 5:41), "Eloi, Eloi, lama sabactani" (Mc 15:34).</td>
+            </tr>
+            <tr>
+              <td><strong style="font-weight:500;">Griego Koiné</strong></td>
+              <td>NT 100%</td>
+              <td>El griego del pueblo llano, hablado en todo el Imperio Romano. Distinto del griego clásico de Platón. Rico en matices: cuatro palabras para amor: eros, storge, phileo, agape.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="highlight-box" style="margin-top:14px;">
+          <p style="margin:0; font-size:13px;">La Septuaginta (LXX), traducción del AT hebreo al griego (s. III-I a.C., Alejandría), fue el texto bíblico que usaban la mayoría de los apóstoles. La Vulgata Latina de Jerónimo (382-405 d.C.) fue la Biblia oficial de Occidente por más de 1,000 años.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ HISTORIA Y EVIDENCIAS ══ -->
+    <section id="historia" class="page-section">
+      <div class="page-eyebrow">Parte II</div>
+      <h1 class="page-title">Historia y Evidencias</h1>
+      <p class="page-intro">Contexto histórico, validez histórica, arqueológica y geográfica de las Escrituras.</p>
+
+      <h2 class="section-title">5. Contexto Histórico y Cultural</h2>
+      <div class="card">
+        <p>La Biblia abarca más de 4,000 años de historia real, enraizada en civilizaciones verificables: Mesopotamia, Egipto, Persia, Grecia y Roma. Los libros fueron escritos a lo largo de aproximadamente 1,500 años, desde el siglo XV a.C. hasta finales del siglo I d.C.</p>
+        <table class="data-table">
+          <thead>
+            <tr><th>Período</th><th>Fechas</th><th>Contexto Cultural</th><th>Libros</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Patriarcal</td><td>2000-1500 a.C.</td><td>Mesopotamia, Ur, Canaán, civilización sumeria y egipcia</td><td>Génesis, Job</td></tr>
+            <tr><td>Éxodo y Conquista</td><td>1500-1000 a.C.</td><td>Egipto faraónico, pueblos cananeos</td><td>Éxodo, Josué, Jueces</td></tr>
+            <tr><td>Monarquía Unida</td><td>1050-930 a.C.</td><td>Israel unificado; influencia filistea</td><td>Samuel, Salmos, Proverbios</td></tr>
+            <tr><td>Monarquía Dividida</td><td>930-586 a.C.</td><td>Reinos de Israel y Judá; Asiria y Babilonia</td><td>Reyes, Crónicas, Profetas mayores</td></tr>
+            <tr><td>Exilio babilónico</td><td>605-538 a.C.</td><td>Imperio Neobabilónico; cultura del Oriente Medio</td><td>Daniel, Ezequiel, Lamentaciones</td></tr>
+            <tr><td>Post-exilio persa</td><td>538-430 a.C.</td><td>Imperio Persa; regreso a Jerusalén</td><td>Esdras, Nehemías, Ester, Malaquías</td></tr>
+            <tr><td>Período romano</td><td>63 a.C.-100 d.C.</td><td>Imperio Romano; vida, muerte y resurrección de Cristo</td><td>Evangelios, Hechos, Epístolas, Apocalipsis</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="section-title">6. Validez Histórica de la Biblia</h2>
+      <div class="card">
+        <p>La Biblia no es mitología ni literatura religiosa genérica. Sus narraciones están ancladas en la historia verificable y corroboradas por múltiples fuentes externas independientes.</p>
+        <table class="data-table">
+          <thead><tr><th>Fuente Histórica</th><th>Confirmación y Relevancia</th></tr></thead>
+          <tbody>
+            <tr><td>Flavio Josefo (37-100 d.C.)</td><td>Historiador judío-romano. En sus obras Antigüedades Judías y La Guerra de los Judíos menciona explícitamente a Jesús (Testimonium Flavianum), a Juan el Bautista, a Herodes el Grande, a Poncio Pilato y a Santiago el hermano del Señor. Fuente completamente externa a la fe cristiana.</td></tr>
+            <tr><td>Tácito (56-120 d.C.)</td><td>Historiador romano. En sus Anales (Libro XV, cap. 44) confirma que Jesús fue ejecutado bajo Poncio Pilato durante el reinado de Tiberio, y que sus seguidores (llamados christianos) fueron perseguidos por Nerón.</td></tr>
+            <tr><td>Suetonio (69-122 d.C.)</td><td>Historiador romano. En Vida de Claudio menciona a los judíos expulsados de Roma por los disturbios causados por Chrestus — referencia ampliamente identificada con Cristo, coherente con Hechos 18:2.</td></tr>
+            <tr><td>Plinio el Joven (61-113 d.C.)</td><td>Gobernador romano de Bitinia. En carta al emperador Trajano (Epístola X.96) describe a los cristianos como personas que cantaban himnos a Cristo como a un dios. Confirma prácticas de la iglesia del NT desde fuera.</td></tr>
+            <tr><td>El Talmud Babilónico</td><td>Textos rabínicos judíos (redactados entre 200-500 d.C.) mencionan a Jesús de Nazaret como un maestro que fue ejecutado en vísperas de la Pascua — confirmando, sin pretenderlo, datos centrales de los Evangelios.</td></tr>
+            <tr><td>Inscripción de Poncio Pilato (1961)</td><td>Hallada en Cesarea Marítima, esta piedra caliza con la inscripción Pontius Pilatus, Praefectus Iudaeae confirmó que Pilato fue un funcionario romano real, como lo describen los cuatro Evangelios.</td></tr>
+            <tr><td>Los Rollos del Mar Muerto (1947)</td><td>Descubiertos en Qumrán, incluyen el libro de Isaías completo datado ~150 a.C. — más de 1,000 años antes de los manuscritos medievales conocidos. La comparación revela una preservación textual extraordinaria, validando la fidelidad de la transmisión del texto bíblico.</td></tr>
+          </tbody>
+        </table>
+        <div class="highlight-box" style="margin-top:16px;">
+          <div class="meta-label" style="margin-bottom:6px;">Dato relevante</div>
+          <p style="margin:0; font-size:13px;">El historiador agnóstico Bart Ehrman admite públicamente: "Podemos saber con certeza histórica que Jesús de Nazaret existió, fue bautizado por Juan y fue crucificado por Poncio Pilato." Incluso los críticos académicos seculares aceptan el núcleo histórico del relato evangélico.</p>
+        </div>
+      </div>
+
+      <h2 class="section-title">7. Validez Arqueológica — Hallazgos que Confirman la Biblia</h2>
+      <div class="card">
+        <p>La arqueología bíblica ha confirmado cientos de personas, lugares y eventos descritos en las Escrituras.</p>
+        <table class="data-table">
+          <thead><tr><th>Hallazgo</th><th>Lugar</th><th>Hallazgo específico</th><th>Confirma en la Biblia</th></tr></thead>
+          <tbody>
+            <tr><td>Estela de Merneptah (1208 a.C.)</td><td>Egipto — Museo de El Cairo</td><td>Primera mención extrabíblica de Israel como pueblo. Inscripción del faraón Merneptah.</td><td>Confirma la existencia del pueblo de Israel en Canaán antes del siglo XIII a.C.</td></tr>
+            <tr><td>Tel Dan Stele (siglo IX a.C.)</td><td>Dan, Israel del Norte</td><td>Inscripción aramea que menciona Beit David (Casa de David) — primera referencia extrabíblica al rey David.</td><td>Confirma que David fue un rey histórico real, no un personaje legendario.</td></tr>
+            <tr><td>Prisma de Senaquerib (700 a.C.)</td><td>Nínive — Museo Británico</td><td>El rey asirio describe su campaña contra Judá y el rey Ezequías encerrado en Jerusalén como pájaro en jaula.</td><td>Confirma 2 Reyes 18-19 e Isaías 36-37 sobre el asedio asirio de Jerusalén.</td></tr>
+            <tr><td>Cilindro de Ciro (539 a.C.)</td><td>Babilonia — Museo Británico</td><td>Ciro el Grande declara su política de restaurar pueblos cautivos a sus tierras de origen.</td><td>Confirma Esdras 1:1-4 sobre el edicto de Ciro liberando a los judíos del cautiverio.</td></tr>
+            <tr><td>Inscripción de Siloé (s. VIII a.C.)</td><td>Túnel de Siloé, Jerusalén</td><td>Describe la excavación del túnel construido bajo el rey Ezequías para abastecer agua a Jerusalén.</td><td>Confirma 2 Reyes 20:20 y 2 Crónicas 32:30 sobre el acueducto de Ezequías.</td></tr>
+            <tr><td>Piscina de Betesda</td><td>Jerusalén — verificada s. XIX</td><td>Los arqueólogos encontraron exactamente los cinco pórticos descritos en Juan 5:2.</td><td>Confirma el detalle preciso de Juan 5:2 sobre la piscina con cinco pórticos.</td></tr>
+            <tr><td>Ciudad de Jericó (Tell es-Sultan)</td><td>Valle del Jordán, Israel</td><td>Excavaciones revelan muros colapsados hacia afuera y evidencia de destrucción súbita y fuego.</td><td>Coherente con Josué 6 sobre la caída de los muros de Jericó.</td></tr>
+            <tr><td>Nazaret del siglo I</td><td>Galilea, Israel</td><td>Excavaciones desde 2009 confirman una aldea judía del siglo I en el área, incluyendo una casa de ese período.</td><td>Confirma que Nazaret existía como aldea real en tiempos de Jesús, contra críticas del s. XIX.</td></tr>
+            <tr><td>Piscina de Siloé (Juan 9)</td><td>Jerusalén — desc. 2004</td><td>Excavaciones de 2004 revelaron la auténtica piscina del período del Segundo Templo.</td><td>Confirma Juan 9:7 sobre la piscina donde Jesús sanó al ciego de nacimiento.</td></tr>
+            <tr><td>Inscripción de Poncio Pilato (1961)</td><td>Cesarea Marítima, Israel</td><td>Placa de piedra caliza con: Pontius Pilatus, Praefectus Iudaeae.</td><td>Primera confirmación arqueológica directa de Poncio Pilato como gobernador de Judea.</td></tr>
+          </tbody>
+        </table>
+        <div class="highlight-box" style="margin-top:16px;">
+          <p style="margin:0; font-size:13px;">Declaración de Nelson Glueck: "Nunca se ha encontrado ningún descubrimiento arqueológico que contradiga o refute una referencia bíblica histórica." — Nelson Glueck, Rivers in the Desert (1959). Glueck fue uno de los más grandes arqueólogos del siglo XX.</p>
+        </div>
+      </div>
+
+      <h2 class="section-title">8. Validez Geográfica — La Precisión del Texto Sagrado</h2>
+      <div class="card">
+        <p>La Biblia menciona cientos de lugares con detalles geográficos específicos — distancias, rutas, topografía, clima — que la geografía moderna y la arqueología han confirmado con notable precisión.</p>
+        <table class="data-table">
+          <thead><tr><th>Área Geográfica</th><th>Confirmación y Detalle</th></tr></thead>
+          <tbody>
+            <tr><td>Precisión topográfica de los Evangelios</td><td>El Evangelio de Juan menciona la piscina de Betesda con cinco pórticos (Jn 5:2), la piscina de Siloé (Jn 9:7), y el huerto de Getsemaní al otro lado del torrente Cedrón (Jn 18:1). Todas estas ubicaciones han sido verificadas arqueológicamente con exactitud. El teólogo John A.T. Robinson usó esta precisión geográfica como argumento para la datación temprana del Evangelio de Juan.</td></tr>
+            <tr><td>Las rutas de Pablo en Hechos</td><td>El libro de Hechos describe los tres viajes misioneros de Pablo con detalles de puertos, ciudades y distancias marítimas y terrestres que el arqueólogo Sir William Ramsay (agnóstico convertido al estudiarlos) calificó como el documento histórico más confiable de la antigüedad grecorromana.</td></tr>
+            <tr><td>El valle del Jordán en Génesis</td><td>Génesis 13:10 describe el valle del Jordán como bien regado antes de la destrucción de Sodoma. La geología y arqueología confirman que la región fue fértil antes de un cataclismo que la transformó en desierto salino, coherente con la narrativa bíblica.</td></tr>
+            <tr><td>El censo de Quirino y la ruta de Belén</td><td>Lucas 2:1-5 describe el viaje de María y José a Belén para el censo imperial. Papiros egipcios del período romano confirman que los censos requerían que las personas se registraran en su ciudad de origen. Belén como ciudad davídica está verificada desde el siglo VIII a.C.</td></tr>
+            <tr><td>Precisión náutica en Hechos 27</td><td>El relato del naufragio de Pablo en Malta (Hch 27) describe con exactitud técnica el fondeo en dos anclas de popa y la bahía de aguas poco profundas. El navegante James Smith (1848) realizó un estudio náutico exhaustivo y concluyó que la descripción es de exactitud imposible para alguien que no hubiera vivido los hechos.</td></tr>
+          </tbody>
+        </table>
+        <div class="highlight-box" style="margin-top:16px;">
+          <p style="margin:0; font-size:13px;">Sir William Ramsay comenzó sus investigaciones en Asia Menor con la convicción de que el libro de Hechos era un documento poco confiable. Después de décadas de excavaciones, escribió: "Lucas es un historiador de primer rango... debe ser colocado junto a los más grandes historiadores." Su conversión intelectual es uno de los casos más famosos en la historia de la arqueología bíblica.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ AUTORES Y GEOGRAFÍA ══ -->
+    <section id="autores" class="page-section">
+      <div class="page-eyebrow">Parte III</div>
+      <h1 class="page-title">Autores y Geografía de Escritura</h1>
+      <p class="page-intro">Dios usó aproximadamente 40 autores humanos de trasfondos radicalmente diferentes durante ~1,500 años.</p>
+
+      <div class="highlight-box">
+        <div class="verse-text" style="font-family:'Playfair Display',serif; font-style:italic;">"porque nunca la profecía fue traída por voluntad humana, sino que los santos hombres de Dios hablaron siendo inspirados por el Espíritu Santo."</div>
+        <div style="font-size:12px; color:var(--accent-terra); margin-top:6px;">— 2 Pedro 1:21</div>
+      </div>
+
+      <h2 class="section-title">9. Autores de la Biblia y sus Profesiones</h2>
+      <div class="card">
+        <table class="data-table">
+          <thead><tr><th>Autor</th><th>Profesión / Rol</th><th>Libros que escribió</th></tr></thead>
+          <tbody>
+            <tr><td>Moisés</td><td>Líder, legislador, pastor de ovejas</td><td>Génesis, Éxodo, Levítico, Números, Deuteronomio</td></tr>
+            <tr><td>Josué</td><td>General militar, líder político</td><td>Josué</td></tr>
+            <tr><td>Samuel</td><td>Sacerdote, juez, profeta</td><td>Jueces, Rut, 1 Samuel (parte)</td></tr>
+            <tr><td>David</td><td>Rey, músico, poeta, pastor</td><td>Gran parte de los Salmos</td></tr>
+            <tr><td>Salomón</td><td>Rey, filósofo, arquitecto</td><td>Proverbios, Eclesiastés, Cantares, algunos Salmos</td></tr>
+            <tr><td>Esdras</td><td>Sacerdote, escriba profesional</td><td>Esdras, posiblemente 1-2 Crónicas</td></tr>
+            <tr><td>Nehemías</td><td>Copero del rey (alto funcionario)</td><td>Nehemías</td></tr>
+            <tr><td>Isaías</td><td>Profeta de familia noble, asesor real</td><td>Isaías</td></tr>
+            <tr><td>Jeremías</td><td>Profeta, sacerdote</td><td>Jeremías, Lamentaciones</td></tr>
+            <tr><td>Ezequiel</td><td>Profeta, sacerdote en el exilio</td><td>Ezequiel</td></tr>
+            <tr><td>Daniel</td><td>Estadista, administrador del Imperio Babilonio</td><td>Daniel</td></tr>
+            <tr><td>Amós</td><td>Pastor y agricultor (sicómoros)</td><td>Amós</td></tr>
+            <tr><td>Mateo (Leví)</td><td>Cobrador de impuestos (publicano)</td><td>Evangelio de Mateo</td></tr>
+            <tr><td>Marcos</td><td>Asistente misionero (intérprete de Pedro)</td><td>Evangelio de Marcos</td></tr>
+            <tr><td>Lucas</td><td>Médico, historiador, compañero de Pablo</td><td>Evangelio de Lucas, Hechos</td></tr>
+            <tr><td>Juan</td><td>Pescador, apóstol, pastor de iglesias</td><td>Evangelio de Juan, 1-2-3 Juan, Apocalipsis</td></tr>
+            <tr><td>Pablo (Saulo)</td><td>Fariseo, fabricante de tiendas, apóstol</td><td>13 Epístolas paulinas</td></tr>
+            <tr><td>Pedro</td><td>Pescador, apóstol, líder de Jerusalén</td><td>1-2 Pedro</td></tr>
+            <tr><td>Santiago</td><td>Líder de la iglesia de Jerusalén, hermano del Señor</td><td>Santiago</td></tr>
+            <tr><td>Judas</td><td>Hermano del Señor</td><td>Judas</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="section-title">10. Regiones Geográficas donde fue Escrita</h2>
+      <div class="card">
+        <p>La Biblia fue escrita en tres continentes, en al menos nueve países modernos, en entornos tan distintos como palacios, desiertos, cárceles, cuevas e islas de exilio.</p>
+        <table class="data-table">
+          <thead><tr><th>Región / Lugar</th><th>Países actuales</th><th>Condición al escribir</th><th>Libros</th></tr></thead>
+          <tbody>
+            <tr><td>Desierto del Sinaí y Arabia</td><td>Egipto, Arabia Saudita</td><td>Nómadas en el desierto</td><td>Éxodo, Levítico, Números, Deuteronomio</td></tr>
+            <tr><td>La Tierra Prometida (Canaán)</td><td>Israel, Palestina, Jordania, Líbano</td><td>Palacios, aldeas, campo</td><td>Josué al AT, Evangelios, Hechos, varias epístolas</td></tr>
+            <tr><td>Egipto</td><td>Egipto</td><td>Esclavitud, refugio</td><td>Génesis (José), huida a Egipto (Mateo 2)</td></tr>
+            <tr><td>Babilonia / Mesopotamia</td><td>Iraq</td><td>Cautividad — exilio forzado</td><td>Daniel, Ezequiel, partes de Esdras</td></tr>
+            <tr><td>Persia</td><td>Irán</td><td>Corte real del Imperio Persa</td><td>Ester, Esdras, Nehemías</td></tr>
+            <tr><td>Asia Menor (Anatolia)</td><td>Turquía</td><td>Iglesias locales, prisión</td><td>Efesios, Colosenses, Gálatas, Apocalipsis</td></tr>
+            <tr><td>Grecia y Macedonia</td><td>Grecia</td><td>Misión apostólica</td><td>Filipenses, 1-2 Tesalonicenses</td></tr>
+            <tr><td>Roma / Italia</td><td>Italia</td><td>Prisión domiciliaria</td><td>Romanos, Filipenses, 2 Timoteo</td></tr>
+            <tr><td>Isla de Patmos</td><td>Grecia (isla)</td><td>Exilio forzado (Juan)</td><td>Apocalipsis</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ══ LA BIBLIA EN EL MUNDO ══ -->
+    <section id="mundo" class="page-section">
+      <div class="page-eyebrow">Parte IV</div>
+      <h1 class="page-title">La Biblia en el Mundo</h1>
+
+      <h2 class="section-title">11. La Importancia de la Biblia en la Historia Secular</h2>
+      <div class="card">
+        <p>Independientemente de la fe, los historiadores, filósofos, juristas y científicos reconocen que la Biblia es el libro más influyente en la historia de la civilización occidental.</p>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:16px;">
+          <div class="prep-block">
+            <div class="prep-block-label">Derecho y Jurisprudencia</div>
+            <p style="margin:0; font-size:13px;">Los Diez Mandamientos (Éxodo 20) son considerados la base más antigua del derecho occidental. La Magna Carta (1215), la Declaración de Independencia de EE.UU. (1776) y las constituciones democráticas modernas se fundamentan en conceptos bíblicos: dignidad humana, igualdad ante la ley, derechos inalienables. El concepto de ley natural que sustenta la jurisprudencia moderna deriva del pensamiento bíblico a través de Tomás de Aquino.</p>
+          </div>
+          <div class="prep-block">
+            <div class="prep-block-label">Educación Universitaria</div>
+            <p style="margin:0; font-size:13px;">Las primeras universidades de Occidente fueron fundadas para estudiar la Biblia y la teología: Oxford (1167), Cambridge (1209), Bolonia (1088), Harvard (1636, cuyo lema original era Veritas Christo et Ecclesiae). El impulso bíblico de que todo ser humano debe saber leer para acceder a las Escrituras fue motor directo de la alfabetización masiva en Europa y América Latina.</p>
+          </div>
+          <div class="prep-block">
+            <div class="prep-block-label">Ciencia y Método Científico</div>
+            <p style="margin:0; font-size:13px;">Galileo, Copérnico, Newton, Kepler, Pasteur, Faraday y Mendel — padres de la ciencia moderna — eran creyentes que veían su trabajo como pensar los pensamientos de Dios. Newton dedicó más escritos a la Biblia que a la física. La cosmovisión bíblica de un cosmos ordenado y comprensible fue condición intelectual para el nacimiento de la ciencia experimental.</p>
+          </div>
+          <div class="prep-block">
+            <div class="prep-block-label">Artes y Literatura</div>
+            <p style="margin:0; font-size:13px;">Dante, Shakespeare, Cervantes, Milton, Dostoievski, Tolstói y García Márquez son incomprensibles sin la Biblia. Más de 450 obras de Bach, Haendel (El Mesías), Haydn, Mozart y Beethoven tienen texto bíblico directo. La arquitectura de catedrales, el arte de Miguel Ángel (Sixtina) y Rembrandt son expresión directa de las Escrituras.</p>
+          </div>
+          <div class="prep-block">
+            <div class="prep-block-label">Abolición de la Esclavitud</div>
+            <p style="margin:0; font-size:13px;">El movimiento abolicionista del siglo XIX fue liderado principalmente por creyentes evangélicos: William Wilberforce en Gran Bretaña, y el movimiento cuáquero y metodista en EE.UU. Su argumento central era bíblico: todos los seres humanos son hechos a imagen de Dios (Génesis 1:27). Abraham Lincoln citó extensamente la Biblia en su segundo discurso inaugural para justificar el fin de la esclavitud.</p>
+          </div>
+          <div class="prep-block">
+            <div class="prep-block-label">Derechos Humanos</div>
+            <p style="margin:0; font-size:13px;">El concepto de dignidad humana inalienable — fundamento de la Declaración Universal de Derechos Humanos de la ONU (1948) — proviene del principio bíblico del Imago Dei (ser humano como imagen de Dios). Juristas como René Cassin y Eleanor Roosevelt reconocen la influencia del pensamiento judeocristiano en su estructura.</p>
+          </div>
+          <div class="prep-block">
+            <div class="prep-block-label">Idiomas y Alfabetización</div>
+            <p style="margin:0; font-size:13px;">Más de 2,000 idiomas tienen sistema de escritura gracias a misioneros bíblicos que los codificaron para traducir las Escrituras. La Biblia es el instrumento número uno de preservación de lenguas originarias en América Latina, África y Asia. El lingüista Eugene Nida del American Bible Society revolucionó la teoría de la traducción moderna.</p>
+          </div>
+          <div class="prep-block">
+            <div class="prep-block-label">Hospitales y Medicina Social</div>
+            <p style="margin:0; font-size:13px;">El primer hospital del mundo occidental fue fundado por el obispo Basilio de Cesarea (370 d.C.) bajo el mandato de Mateo 25:36. La Cruz Roja Internacional (Henry Dunant, 1863) y miles de hospitales en países en desarrollo nacieron de la ética bíblica del prójimo. En América Latina, los primeros hospitales, escuelas y universidades fueron fundados por órdenes religiosas inspiradas en la Biblia.</p>
+          </div>
+        </div>
+        <div class="highlight-box" style="margin-top:16px;">
+          <p style="margin:0; font-size:13px;">Jürgen Habermas (filósofo agnóstico): "El igualitarismo universalista, del cual surgieron las ideas de libertad y vida social solidaria, de conducta autónoma moral y emancipación... es el legado directo de la ética judía de la justicia y la ética cristiana del amor. Hasta hoy no tenemos ninguna alternativa para esto." — Zeit der Übergänge (2001).</p>
+        </div>
+      </div>
+
+      <h2 class="section-title">12. ¿Cómo se Extendió la Biblia por el Mundo?</h2>
+      <div class="card">
+        <table class="data-table">
+          <thead><tr><th>Etapa</th><th>Descripción</th></tr></thead>
+          <tbody>
+            <tr><td>1. Tradición oral y manuscritos (hasta 400 d.C.)</td><td>Las Escrituras se copiaban a mano con cuidado extraordinario. Comunidades judías preservaron el AT; copistas cristianos copiaron el NT en rollos y códices. Los Padres de la Iglesia citaban extensamente las Escrituras, ayudando a preservar el texto.</td></tr>
+            <tr><td>2. Septuaginta (siglos III-I a.C.)</td><td>Primera traducción de la Biblia: el AT hebreo al griego en Alejandría. Permitió a judíos de la diáspora y gentiles curiosos acceder a las Escrituras. Fue el texto que más usaron Jesús y los apóstoles al citar el AT.</td></tr>
+            <tr><td>3. Vulgata Latina — Jerónimo (382-405 d.C.)</td><td>Jerónimo tradujo la Biblia completa al latín por encargo del Papa Dámaso I. La Vulgata fue el texto oficial de la iglesia occidental durante más de 1,000 años y preservó el texto en toda Europa.</td></tr>
+            <tr><td>4. Gutenberg y la imprenta (1455 d.C.)</td><td>La Biblia de Gutenberg fue el primer libro impreso con tipos móviles en Occidente. Esto revolucionó la difusión: la Biblia pasó de ser un libro de monasterios a estar al alcance de las clases populares por primera vez en la historia.</td></tr>
+            <tr><td>5. La Reforma Protestante (1517 en adelante)</td><td>Lutero tradujo la Biblia al alemán (NT 1522; completa 1534). Casiodoro de Reina produjo la Biblia del Oso en español (1569), revisada por Cipriano de Valera (1602) — base de la RVR 1960 que usamos hoy.</td></tr>
+            <tr><td>6. Sociedades Bíblicas (1804 en adelante)</td><td>La Sociedad Bíblica Británica y Extranjera (1804) y la Sociedad Bíblica Americana (1816) se dedicaron a traducir y distribuir la Biblia globalmente a bajo costo. Hoy las Sociedades Bíblicas Unidas coordinan la labor de traducción en más de 200 países.</td></tr>
+            <tr><td>7. Era digital (siglo XX-XXI)</td><td>YouVersion (app) ha sido instalada más de 700 millones de veces en 150 idiomas. Gideons International ha distribuido más de 2,000 millones de Biblias. La Biblia está disponible en audio, Braille, lengua de señas y formatos accesibles para personas con discapacidad visual.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="section-title">13. Resistencia y Persecución que ha Recibido</h2>
+      <div class="card">
+        <p>La Biblia es el libro más perseguido y más sobreviviente de la historia humana. Imperios, emperadores y sistemas políticos han intentado eliminarla — ninguno lo ha logrado.</p>
+        <div style="display:flex; flex-direction:column; gap:12px; margin-top:16px;">
+          <div class="prep-block"><div class="prep-block-label">Antíoco IV Epífanes (167 a.C.)</div><p style="margin:0;font-size:13px;">Ordenó quemar todos los rollos de la Escritura y matar a quienes los poseyeran. El texto sobrevivió y el período se convirtió en la base histórica del libro de los Macabeos.</p></div>
+          <div class="prep-block"><div class="prep-block-label">Nerón y la persecución romana (64 d.C.)</div><p style="margin:0;font-size:13px;">Culpó a los cristianos del incendio de Roma. Muchos creyentes con escritos apostólicos fueron martirizados. Pablo fue decapitado; Pedro crucificado invertido.</p></div>
+          <div class="prep-block"><div class="prep-block-label">Edicto de Diocleciano (303 d.C.)</div><p style="margin:0;font-size:13px;">Ordenó destruir todas las Biblias del Imperio Romano. Los que entregaban los escritos eran llamados traditores (origen de traidor). Diez años después, Constantino legalizó el cristianismo y encargó 50 copias de las Escrituras.</p></div>
+          <div class="prep-block"><div class="prep-block-label">Quema de Biblias en la Edad Media</div><p style="margin:0;font-size:13px;">John Wycliffe (s. XIV) fue declarado hereje; sus huesos exhumados y quemados con sus traducciones. Jan Hus fue quemado vivo (1415). William Tyndale fue estrangulado y quemado (1536) por traducir el NT al inglés.</p></div>
+          <div class="prep-block"><div class="prep-block-label">Regímenes totalitarios del siglo XX</div><p style="margin:0;font-size:13px;">La URSS bajo Stalin, la China de Mao (Revolución Cultural 1966-1976) y la Alemania Nazi persiguieron creyentes y quemaron Biblias. En todos los casos, la Iglesia sobrevivió al régimen.</p></div>
+          <div class="prep-block"><div class="prep-block-label">Siglo XXI</div><p style="margin:0;font-size:13px;">El ISIS quema Biblias e iglesias en Iraq y Siria. En Corea del Norte poseer una Biblia puede llevar a ejecución o campos de concentración. La Biblia sigue siendo el libro más confiscado del mundo.</p></div>
+        </div>
+        <div class="verse-block">
+          <div class="verse-label">Mateo 24:35</div>
+          <div class="verse-text">"El cielo y la tierra pasarán, pero mis palabras no pasarán."</div>
+        </div>
+      </div>
+
+      <h2 class="section-title">14. Países donde la Biblia está Prohibida o Restringida</h2>
+      <div class="card">
+        <p style="margin-bottom:14px;">Según informes de Puertas Abiertas, Sociedades Bíblicas Unidas y Release International:</p>
+        <table class="data-table">
+          <thead><tr><th>País</th><th>Situación</th><th>Nivel</th></tr></thead>
+          <tbody>
+            <tr><td>Corea del Norte</td><td>Poseer una Biblia puede resultar en ejecución o campo de concentración. Es el país con mayor persecución cristiana del mundo según el Índice Mundial de Persecución.</td><td><span class="badge badge-clay">Extremo</span></td></tr>
+            <tr><td>Arabia Saudita</td><td>Importación de Biblias prohibida. No se permite ninguna iglesia. Conversos del Islam pueden enfrentar pena de muerte por apostasía.</td><td><span class="badge badge-clay">Muy alto</span></td></tr>
+            <tr><td>Irán</td><td>Biblias en persa prohibidas. Iglesias en farsi ilegales. Conversos del Islam: cárcel y riesgo de muerte.</td><td><span class="badge badge-clay">Muy alto</span></td></tr>
+            <tr><td>Somalia</td><td>Ley sharia hace ilegal poseer una Biblia. Persecución por grupos islamistas como Al-Shabaab.</td><td><span class="badge badge-clay">Muy alto</span></td></tr>
+            <tr><td>Afganistán</td><td>Bajo el régimen talibán (desde 2021), el cristianismo está prohibido. Conversiones castigadas con muerte.</td><td><span class="badge badge-clay">Muy alto</span></td></tr>
+            <tr><td>China</td><td>Distribución restringida: solo en iglesias registradas. No se puede comprar en línea. Millones de creyentes en iglesias domésticas clandestinas.</td><td><span class="badge badge-mustard">Alto</span></td></tr>
+            <tr><td>Eritrea</td><td>Solo cuatro denominaciones registradas. Muchos creyentes en prisión por su fe.</td><td><span class="badge badge-mustard">Alto</span></td></tr>
+            <tr><td>Uzbekistán</td><td>Distribución de literatura religiosa sin registrar prohibida. Biblias importadas son confiscadas.</td><td><span class="badge badge-mustard">Alto</span></td></tr>
+            <tr><td>Vietnam</td><td>Biblias limitadas; minorías étnicas con acceso muy restringido.</td><td><span class="badge badge-terra">Moderado-Alto</span></td></tr>
+          </tbody>
+        </table>
+        <div class="highlight-box" style="margin-top:14px;">
+          <p style="margin:0;font-size:13px;">Llamado a la oración: Más de 360 millones de cristianos en el mundo enfrentan persecución de alto nivel. Como iglesia, tenemos el privilegio y la responsabilidad de orar por nuestros hermanos en países de persecución (Hebreos 13:3).</p>
+        </div>
+      </div>
+
+      <h2 class="section-title">15. Idiomas en que se Encuentra Actualmente</h2>
+      <div class="card">
+        <p>La Biblia es el libro más traducido en la historia de la humanidad. Según el informe de las Sociedades Bíblicas Unidas (2023):</p>
+        <table class="data-table">
+          <thead><tr><th>Alcance</th><th>Cantidad</th><th>Detalle</th></tr></thead>
+          <tbody>
+            <tr><td>Biblia completa (AT + NT)</td><td>Más de 730 idiomas</td><td>Inglés, español, francés, mandarín, árabe, ruso, portugués, alemán, hindi, swahili y muchos más.</td></tr>
+            <tr><td>Solo Nuevo Testamento</td><td>Más de 1,660 adicionales</td><td>Muchas comunidades ya tienen acceso al NT completo aunque el AT aún se traduce.</td></tr>
+            <tr><td>Al menos un libro bíblico</td><td>Más de 3,600 adicionales</td><td>Cada año se completan nuevas traducciones de libros individuales.</td></tr>
+            <tr><td>Total parcial o completo</td><td>Más de 5,990 idiomas</td><td>Cubre aproximadamente el 97% de la población mundial.</td></tr>
+            <tr><td>Sin ninguna porción bíblica</td><td>Aprox. 2,000 idiomas</td><td>Principalmente lenguas de comunidades pequeñas y aisladas. Wycliffe Bible Translators trabaja activamente en estas lenguas.</td></tr>
+          </tbody>
+        </table>
+        <h3 class="sub-section" style="margin-top:24px;">Versiones en español más utilizadas</h3>
+        <table class="data-table">
+          <thead><tr><th>Versión</th><th>Año</th><th>Características</th></tr></thead>
+          <tbody>
+            <tr><td>Reina-Valera 1960 (RVR60)</td><td>1960</td><td>La más usada en iglesias evangélicas latinoamericanas. Lenguaje formal y majestuoso.</td></tr>
+            <tr><td>Reina-Valera Contemporánea (RVC)</td><td>2011</td><td>Actualización del texto RVR con lenguaje más contemporáneo manteniendo la fidelidad.</td></tr>
+            <tr><td>Nueva Versión Internacional (NVI)</td><td>1999</td><td>Traducción de equivalencia dinámica; lenguaje natural y de lectura fluida.</td></tr>
+            <tr><td>Biblia de las Américas (LBLA)</td><td>1986</td><td>Muy literal; ideal para estudio serio de la Palabra.</td></tr>
+            <tr><td>Dios Habla Hoy (DHH)</td><td>1979</td><td>Lenguaje coloquial; útil para nuevos creyentes y evangelismo.</td></tr>
+            <tr><td>Nueva Traducción Viviente (NTV)</td><td>2010</td><td>Paráfrasis con lenguaje muy contemporáneo; fácil lectura.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ══ FUNDAMENTO ESPIRITUAL ══ -->
+    <section id="espiritual" class="page-section">
+      <div class="page-eyebrow">Parte V</div>
+      <h1 class="page-title">Fundamento Espiritual</h1>
+      <p class="page-intro">Versículos sobre la relevancia e inspiración de las Escrituras.</p>
+
+      <div class="card">
+        <p>La propia Biblia da testimonio de su origen divino, su autoridad y su poder transformador.</p>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:20px;">
+          <div class="verse-block"><div class="verse-label">La Biblia es inspirada por Dios — 2 Timoteo 3:16-17</div><div class="verse-text">"Toda la Escritura es inspirada por Dios, y útil para enseñar, para redargüir, para corregir, para instruir en justicia, a fin de que el hombre de Dios sea perfecto, enteramente preparado para toda buena obra."</div></div>
+          <div class="verse-block"><div class="verse-label">La Biblia es la Palabra viva y activa — Hebreos 4:12</div><div class="verse-text">"Porque la palabra de Dios es viva y eficaz, y más cortante que toda espada de dos filos; y penetra hasta partir el alma y el espíritu, las coyunturas y los tuétanos, y discierne los pensamientos y las intenciones del corazón."</div></div>
+          <div class="verse-block"><div class="verse-label">La Biblia ilumina el camino — Salmos 119:105</div><div class="verse-text">"Lámpara es a mis pies tu palabra, y lumbrera a mi camino."</div></div>
+          <div class="verse-block"><div class="verse-label">La Biblia es eterna e inmutable — Mateo 24:35</div><div class="verse-text">"El cielo y la tierra pasarán, pero mis palabras no pasarán."</div></div>
+          <div class="verse-block"><div class="verse-label">La Biblia produce fe — Romanos 10:17</div><div class="verse-text">"Así que la fe es por el oír, y el oír, por la palabra de Dios."</div></div>
+          <div class="verse-block"><div class="verse-label">La Biblia purifica la vida — Salmos 119:9</div><div class="verse-text">"¿Con qué limpiará el joven su camino? Con guardar tu palabra."</div></div>
+          <div class="verse-block"><div class="verse-label">La Biblia produce el nuevo nacimiento — 1 Pedro 1:23</div><div class="verse-text">"siendo renacidos, no de simiente corruptible, sino de incorruptible, por la palabra de Dios que vive y permanece para siempre."</div></div>
+          <div class="verse-block"><div class="verse-label">La Biblia es el pan espiritual — Mateo 4:4</div><div class="verse-text">"No solo de pan vivirá el hombre, sino de toda palabra que sale de la boca de Dios."</div></div>
+          <div class="verse-block"><div class="verse-label">La Biblia revela a Jesucristo — Juan 5:39</div><div class="verse-text">"Escudriñad las Escrituras; porque a vosotros os parece que en ellas tenéis la vida eterna; y ellas son las que dan testimonio de mí."</div></div>
+          <div class="verse-block"><div class="verse-label">La Biblia guarda de pecar — Salmos 119:11</div><div class="verse-text">"En mi corazón he guardado tus dichos, para no pecar contra ti."</div></div>
+          <div class="verse-block"><div class="verse-label">La Biblia es alimento y gozo — Jeremías 15:16</div><div class="verse-text">"Fueron halladas tus palabras, y yo las comí; y tu palabra me fue por gozo y por alegría de mi corazón."</div></div>
+          <div class="verse-block"><div class="verse-label">La Biblia es perfecta y restaura — Salmos 19:7</div><div class="verse-text">"La ley de Jehová es perfecta, que convierte el alma; el testimonio de Jehová es fiel, que hace sabio al sencillo."</div></div>
+          <div class="verse-block"><div class="verse-label">La Biblia es inspirada por el Espíritu — 2 Pedro 1:21</div><div class="verse-text">"porque nunca la profecía fue traída por voluntad humana, sino que los santos hombres de Dios hablaron siendo inspirados por el Espíritu Santo."</div></div>
+          <div class="verse-block"><div class="verse-label">La Biblia es la espada del Espíritu — Efesios 6:17</div><div class="verse-text">"Y tomad el yelmo de la salvación, y la espada del Espíritu, que es la palabra de Dios."</div></div>
+        </div>
+
+        <div class="nota-final" style="margin-top:28px;">
+          <p style="font-size:14px; line-height:1.8; color:var(--text-mid);">La Biblia no es solo un libro histórico, literario, arqueológico o cultural — aunque lo es en grado superlativo. Es la Palabra viva del Dios Trino: Padre, Hijo y Espíritu Santo. Fue inspirada por el Espíritu Santo, escrita por hombres reales en lugares reales, preservada por Dios a través de siglos de persecución, confirmada por la historia y la arqueología, y transformadora de civilizaciones enteras. Pero sobre todo, fue dada a nosotros para conocer a Jesucristo como Salvador y Señor, y para que por la fe en sus palabras tengamos vida eterna.</p>
+          <div class="verse-block" style="margin-top:16px;">
+            <div class="verse-label">Romanos 1:16</div>
+            <div class="verse-text">"Porque yo no me avergüenzo del evangelio, porque es poder de Dios para salvación a todo aquel que cree; al judío primeramente, y también al griego."</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ AT INTRO ══ -->
+    <section id="at-intro" class="page-section">
+      <div class="page-eyebrow">Antiguo Testamento</div>
+      <h1 class="page-title">Introducción al Antiguo Testamento</h1>
+      <p class="page-intro">Los 39 libros del Antiguo Testamento están organizados por su clasificación literaria.</p>
+      <div class="hero-block">
+        <div class="hero-quote">"Toda la Escritura es inspirada por Dios..."</div>
+        <div class="hero-quote-ref">— 2 Timoteo 3:16</div>
+      </div>
+      <div class="card">
+        <p>Para cada libro encontrarás: autor, fecha aproximada de escritura, contexto histórico, versículo clave, a quién va dirigido, cómo apunta a Cristo y cuál es su propósito central.</p>
+        <table class="data-table" style="margin-top:16px;">
+          <thead><tr><th>#</th><th>Categoría</th><th>Libros</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>Pentateuco (Torah)</td><td>Génesis a Deuteronomio — 5 libros</td></tr>
+            <tr><td>2</td><td>Libros Históricos</td><td>Josué a Ester — 12 libros</td></tr>
+            <tr><td>3</td><td>Libros Poéticos y Sapienciales</td><td>Job a Cantares — 5 libros</td></tr>
+            <tr><td>4</td><td>Profetas Mayores</td><td>Isaías a Daniel — 5 libros</td></tr>
+            <tr><td>5</td><td>Profetas Menores</td><td>Oseas a Malaquías — 12 libros</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ══ AT PENTATEUCO ══ -->
+    <section id="at-pentateuco" class="page-section">
+      <div class="page-eyebrow">Antiguo Testamento — Sección 1</div>
+      <h1 class="page-title">El Pentateuco</h1>
+      <p class="page-intro">Los Cinco Libros de la Ley. También llamado la Torah o Ley de Moisés. Narra los orígenes del universo, la humanidad, el pueblo de Israel y el pacto de Dios con ellos.</p>
+
+      <div id="books-pentateuco"></div>
+    </section>
+
+    <!-- ══ AT HISTÓRICOS ══ -->
+    <section id="at-historicos" class="page-section">
+      <div class="page-eyebrow">Antiguo Testamento — Sección 2</div>
+      <h1 class="page-title">Libros Históricos</h1>
+      <p class="page-intro">Narran la historia de Israel desde la conquista de Canaán hasta el regreso del exilio babilónico (~1400–400 a.C.).</p>
+      <div id="books-historicos"></div>
+    </section>
+
+    <!-- ══ AT POÉTICOS ══ -->
+    <section id="at-poeticos" class="page-section">
+      <div class="page-eyebrow">Antiguo Testamento — Sección 3</div>
+      <h1 class="page-title">Libros Poéticos y Sapienciales</h1>
+      <p class="page-intro">Expresan la experiencia humana ante Dios a través de poesía, sabiduría e himnos. Abordan el sufrimiento, la alabanza, el amor y la sabiduría práctica.</p>
+      <div id="books-poeticos"></div>
+    </section>
+
+    <!-- ══ AT PROFETAS MAYORES ══ -->
+    <section id="at-profetas-mayores" class="page-section">
+      <div class="page-eyebrow">Antiguo Testamento — Sección 4</div>
+      <h1 class="page-title">Profetas Mayores</h1>
+      <p class="page-intro">Libros de mayor extensión. Profetizan juicio, restauración y la venida del Mesías en contextos de crisis nacional y espiritual.</p>
+      <div id="books-profetas-mayores"></div>
+    </section>
+
+    <!-- ══ AT PROFETAS MENORES ══ -->
+    <section id="at-profetas-menores" class="page-section">
+      <div class="page-eyebrow">Antiguo Testamento — Sección 5</div>
+      <h1 class="page-title">Profetas Menores</h1>
+      <p class="page-intro">Son 12 libros de menor extensión (no menor importancia). Abarcan ~400 años de profecía, desde el período asirio hasta el postexilio.</p>
+      <div id="books-profetas-menores"></div>
+    </section>
+
+    <!-- ══ NT INTRO ══ -->
+    <section id="nt-intro" class="page-section">
+      <div class="page-eyebrow">Nuevo Testamento</div>
+      <h1 class="page-title">Introducción al Nuevo Testamento</h1>
+      <p class="page-intro">El Nuevo Testamento contiene 27 libros escritos entre ~45–96 d.C. Todos tienen como centro a Jesucristo: su persona, su obra, su Iglesia y su regreso.</p>
+      <div class="hero-block">
+        <div class="hero-quote">"La Palabra se hizo carne y habitó entre nosotros."</div>
+        <div class="hero-quote-ref">— Juan 1:14</div>
+      </div>
+      <div class="card">
+        <table class="data-table">
+          <thead><tr><th>#</th><th>Categoría</th><th>Libros</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>Evangelios</td><td>Mateo, Marcos, Lucas, Juan — 4 libros</td></tr>
+            <tr><td>2</td><td>Historia de la Iglesia</td><td>Hechos — 1 libro</td></tr>
+            <tr><td>3</td><td>Epístolas Paulinas</td><td>Romanos a Filemón — 13 libros</td></tr>
+            <tr><td>4</td><td>Epístolas Generales</td><td>Hebreos a Judas — 8 libros</td></tr>
+            <tr><td>5</td><td>Profecía Apocalíptica</td><td>Apocalipsis — 1 libro</td></tr>
+          </tbody>
+        </table>
+        <div class="nota-final" style="margin-top:24px;">
+          <h3 class="sub-section">El hilo redentor del Nuevo Testamento</h3>
+          <p style="font-size:13px;">Los Evangelios responden: ¿Quién es Cristo? — Su persona, vida, muerte y resurrección.</p>
+          <p style="font-size:13px;">Hechos responde: ¿Qué hace Cristo? — Actúa por su Espíritu en y a través de su Iglesia.</p>
+          <p style="font-size:13px;">Las Epístolas responden: ¿Qué significa Cristo para nosotros? — Salvación, santificación, esperanza y vida en comunidad.</p>
+          <p style="font-size:13px; margin-bottom:0;">Apocalipsis responde: ¿A dónde va todo? — Cristo triunfa, reina y hace nuevas todas las cosas.</p>
+          <div class="verse-block" style="margin-top:14px;">
+            <div class="verse-label">Apocalipsis 22:12</div>
+            <div class="verse-text">"Vengo pronto; y mi recompensa está conmigo."</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ NT EVANGELIOS ══ -->
+    <section id="nt-evangelios" class="page-section">
+      <div class="page-eyebrow">Nuevo Testamento — Sección 1</div>
+      <h1 class="page-title">Los Evangelios</h1>
+      <p class="page-intro">Los cuatro Evangelios presentan a Jesús desde cuatro perspectivas complementarias: Rey (Mateo), Siervo (Marcos), Hombre perfecto (Lucas) y Dios encarnado (Juan).</p>
+      <div id="books-evangelios"></div>
+    </section>
+
+    <!-- ══ NT HECHOS ══ -->
+    <section id="nt-hechos" class="page-section">
+      <div class="page-eyebrow">Nuevo Testamento — Sección 2</div>
+      <h1 class="page-title">Historia de la Iglesia</h1>
+      <p class="page-intro">El único libro histórico del NT narra el nacimiento y expansión de la Iglesia por el poder del Espíritu Santo.</p>
+      <div id="books-hechos"></div>
+    </section>
+
+    <!-- ══ NT PAULINAS ══ -->
+    <section id="nt-paulinas" class="page-section">
+      <div class="page-eyebrow">Nuevo Testamento — Sección 3</div>
+      <h1 class="page-title">Epístolas Paulinas</h1>
+      <p class="page-intro">13 cartas escritas por el apóstol Pablo a iglesias y personas. Desarrollan la doctrina cristiana: salvación, santificación, la Iglesia y la vida cristiana práctica.</p>
+      <div id="books-paulinas"></div>
+    </section>
+
+    <!-- ══ NT GENERALES ══ -->
+    <section id="nt-generales" class="page-section">
+      <div class="page-eyebrow">Nuevo Testamento — Sección 4</div>
+      <h1 class="page-title">Epístolas Generales</h1>
+      <p class="page-intro">8 cartas no paulinas dirigidas a la Iglesia en general. Abordan la madurez cristiana, las falsas enseñanzas, el sufrimiento y la fidelidad al evangelio.</p>
+      <div id="books-generales"></div>
+    </section>
+
+    <!-- ══ NT APOCALIPSIS ══ -->
+    <section id="nt-apocalipsis" class="page-section">
+      <div class="page-eyebrow">Nuevo Testamento — Sección 5</div>
+      <h1 class="page-title">Profecía Apocalíptica</h1>
+      <p class="page-intro">El único libro profético del NT. Revela el triunfo final de Cristo sobre el mal, el juicio de las naciones y el establecimiento del reino eterno.</p>
+      <div id="books-apocalipsis"></div>
+    </section>
+
+    <!-- ══ ASISTENCIA ══ -->
+    <section id="asistencia" class="page-section">
+      <div class="page-eyebrow">Gestión del Curso</div>
+      <h1 class="page-title">Registro de Asistencia</h1>
+
+      <div class="card-grid">
+        <div class="stat-card"><div class="stat-number" id="stat-estudiantes">0</div><div class="stat-label">Estudiantes</div></div>
+        <div class="stat-card"><div class="stat-number" id="stat-clases">0</div><div class="stat-label">Clases registradas</div></div>
+      </div>
+
+      <div class="card" style="margin-bottom:20px;">
+        <h3 class="sub-section" style="margin-top:0;">Agregar estudiante</h3>
+        <div style="display:flex; gap:10px; align-items:center;">
+          <input type="text" id="new-student-input" placeholder="Nombre del estudiante" style="flex:1;" onkeydown="if(event.key==='Enter')addStudent()">
+          <button class="btn btn-primary" onclick="addStudent()">Agregar</button>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:20px;">
+        <h3 class="sub-section" style="margin-top:0;">Agregar clase</h3>
+        <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+          <input type="text" id="new-class-label" placeholder="Nombre de la clase" style="flex:1; min-width:180px;">
+          <input type="date" id="new-class-date">
+          <button class="btn btn-primary" onclick="addClass()">Agregar clase</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; flex-wrap:wrap; gap:10px;">
+          <h3 class="sub-section" style="margin-top:0; margin-bottom:0;">Lista de asistencia</h3>
+          <div class="legend">
+            <div class="legend-item"><div class="legend-dot present"></div>Presente</div>
+            <div class="legend-item"><div class="legend-dot absent"></div>Ausente</div>
+            <div class="legend-item"><div class="legend-dot excused"></div>Excusado</div>
+            <div class="legend-item"><div class="legend-dot none"></div>Sin marcar</div>
+          </div>
+        </div>
+        <div id="attendance-table-wrap" style="overflow-x:auto;">
+          <div id="attendance-table"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ PREPARACIÓN DE CLASES ══ -->
+    <section id="clases" class="page-section">
+      <div class="page-eyebrow">Gestión del Curso</div>
+      <h1 class="page-title">Preparación de Clases</h1>
+      <p class="page-intro">Organiza el contenido, objetivos y notas de cada sesión del curso de Panorama Bíblico.</p>
+
+      <div class="card" style="margin-bottom:20px;">
+        <h3 class="sub-section" style="margin-top:0;">Nueva clase</h3>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+          <input type="text" id="prep-title-input" placeholder="Título de la clase" style="flex:1; min-width:200px;">
+          <input type="text" id="prep-topic-input" placeholder="Tema principal" style="flex:1; min-width:180px;">
+          <button class="btn btn-primary" onclick="addPrepClass()">Crear clase</button>
+        </div>
+      </div>
+
+      <div id="prep-list"></div>
+    </section>
+
+  </main>
+</div>
+
+<script>
+// ── DATA ──
+const BOOKS = {
+  pentateuco: [
+    { num:1, title:"Génesis", subtitle:"El Libro de los Comienzos", autor:"Moisés (con posibles fuentes antiguas recopiladas)", anio:"1445–1405 a.C. (tradición mosaica)", dirigido:"El pueblo de Israel recién salido de Egipto; toda la humanidad en sentido amplio.", contexto:"Israel recién liberado de Egipto necesitaba comprender sus raíces. El libro cubre desde la creación hasta los patriarcas en Egipto (~2000 años de historia).", cristo:"La simiente de la mujer (Gn. 3:15) — primera profecía mesiánica. Tipo: José como salvador y reconciliador prefigura a Cristo.", proposito:"Revelar los orígenes: creación, caída, diluvio, dispersión y el llamado de Abraham como inicio del plan de redención.", versiculo:"En el principio creó Dios los cielos y la tierra.", ref:"Génesis 1:1" },
+    { num:2, title:"Éxodo", subtitle:"El Libro de la Liberación", autor:"Moisés", anio:"1445–1405 a.C.", dirigido:"El pueblo de Israel en esclavitud; también a la Iglesia como pueblo redimido.", contexto:"Israel esclavizado en Egipto por ~400 años. Dios levanta a Moisés para liberarlos con señales poderosas y establecer Su pacto en el Sinaí.", cristo:"El cordero pascual (Ex. 12) prefigura a Cristo como nuestro Cordero. El maná, la roca y el tabernáculo apuntan a Cristo como pan de vida, agua y presencia de Dios.", proposito:"Mostrar la redención de Israel (tipo de la salvación) y el establecimiento del pacto mosaico con la Ley y el sistema de sacrificios.", versiculo:"Yo soy el que soy... Jehová... este es mi nombre para siempre.", ref:"Éxodo 3:14-15" },
+    { num:3, title:"Levítico", subtitle:"El Libro de la Santidad", autor:"Moisés", anio:"1445–1405 a.C.", dirigido:"Los sacerdotes levitas y el pueblo de Israel en general.", contexto:"En el campamento del Sinaí. Israel necesitaba instrucciones para acercarse a un Dios santo a través del sistema sacerdotal y sacrificial.", cristo:"Todo el sistema de sacrificios señala a Cristo: el holocausto (entrega total), la ofrenda de paz (reconciliación), el Día de la Expiación (Heb. 9). Cristo es nuestro Sumo Sacerdote.", proposito:"Instruir a Israel en la adoración, el culto, la pureza ritual y moral para mantener su relación con un Dios santo.", versiculo:"Santos seréis, porque yo Jehová vuestro Dios soy santo.", ref:"Levítico 19:2" },
+    { num:4, title:"Números", subtitle:"El Libro del Desierto", autor:"Moisés", anio:"1445–1405 a.C.", dirigido:"La nueva generación de israelitas que entrará a la Tierra Prometida.", contexto:"Los 40 años de peregrinación por el desierto del Sinaí. Dos censos (de ahí su nombre) enmarcan una generación incrédula y otra que entrará a Canaán.", cristo:"La serpiente de bronce (Nm. 21) es figura de Cristo levantado en la cruz (Jn. 3:14-15). La roca que da agua (Nm. 20) tipifica a Cristo (1 Co. 10:4).", proposito:"Registrar la historia de la peregrinación, la desobediencia y su consecuencia, y la fidelidad de Dios en preparar a la siguiente generación.", versiculo:"Jehová te bendiga y te guarde... y ponga en ti paz.", ref:"Números 6:24-26" },
+    { num:5, title:"Deuteronomio", subtitle:"El Libro de la Renovación del Pacto", autor:"Moisés", anio:"1406–1405 a.C.", dirigido:"La segunda generación de israelitas lista para entrar a Canaán.", contexto:"Llanuras de Moab, antes de cruzar el Jordán. Moisés renueva el pacto con la nueva generación que no estuvo en el Sinaí.", cristo:"Moisés profetiza sobre un profeta venidero (Dt. 18:15-19) que es Cristo. El libro subraya la gracia del pacto que Cristo cumplirá perfectamente.", proposito:"Recordar las leyes, renovar el compromiso con Dios y preparar al pueblo para la conquista bajo el nuevo liderazgo de Josué.", versiculo:"Amarás a Jehová tu Dios con todo tu corazón, con toda tu alma y con todas tus fuerzas.", ref:"Deuteronomio 6:5" },
+  ],
+  historicos: [
+    { num:6, title:"Josué", subtitle:"El Libro de la Conquista", autor:"Josué (partes finales por escribas posteriores)", anio:"1400–1370 a.C.", dirigido:"El pueblo de Israel que entra a poseer la tierra prometida.", contexto:"Conquista y distribución de Canaán bajo el liderazgo de Josué, sucesor de Moisés.", cristo:"Josué es tipo de Jesús (mismo nombre en hebreo: Yeshua). Así como Josué conduce al pueblo a la tierra prometida, Cristo nos conduce al descanso eterno (Heb. 4).", proposito:"Mostrar el cumplimiento de las promesas de Dios a Abraham y la importancia de la obediencia para heredar las bendiciones.", versiculo:"Esfuérzate y sé valiente; no temas ni desmayes, porque Jehová tu Dios estará contigo.", ref:"Josué 1:9" },
+    { num:7, title:"Jueces", subtitle:"El Libro de los Ciclos", autor:"Probablemente Samuel", anio:"1043–1000 a.C. (describe ~1375–1050 a.C.)", dirigido:"Israel durante el período predinástico.", contexto:"Israel en Canaán: ciclo repetido de apostasía, opresión, clamor y liberación a través de jueces carismáticos. Época de anarquía moral.", cristo:"Los jueces como libertadores son sombra del libertador supremo, Cristo. Sansón, tipo imperfecto de Cristo, entrega su vida destruyendo al enemigo.", proposito:"Mostrar las consecuencias del alejamiento de Dios y la necesidad de un rey (figura del Rey de reyes).", versiculo:"En aquellos días no había rey en Israel; cada uno hacía lo que le parecía bien.", ref:"Jueces 21:25" },
+    { num:8, title:"Rut", subtitle:"El Libro de la Redención Fiel", autor:"Probablemente Samuel", anio:"~1000 a.C. (describe ~1100 a.C.)", dirigido:"Israel y los gentiles que buscan refugio bajo las alas del Dios de Israel.", contexto:"Época de los jueces. Mujer moabita que se une al pueblo de Israel por fidelidad y amor, y es redimida por Booz.", cristo:"Booz como pariente-redentor (go'el) es el tipo más claro de Cristo redentor en el AT. Señala a Cristo que nos redime pagando nuestro precio.", proposito:"Mostrar la providencia de Dios, la redención del extranjero e incluir a Rut en el linaje davídico que llevará a Cristo (Mt. 1:5).", versiculo:"Tu pueblo será mi pueblo, y tu Dios mi Dios.", ref:"Rut 1:16" },
+    { num:9, title:"1 Samuel", subtitle:"El Libro del Primer Rey", autor:"Samuel, Natán y Gad (1 Cr. 29:29)", anio:"~931 a.C. (describe ~1105–1010 a.C.)", dirigido:"Israel en transición hacia la monarquía.", contexto:"Transición de la teocracia tribal al reino monárquico. Samuel, último juez y primer profeta; Saúl, primer rey; David, su sucesor.", cristo:"David es el tipo más completo de Cristo en el AT: pastor, rey rechazado antes de reinar, ungido por el Espíritu. El pacto davídico (2 S. 7) señala al Mesías.", proposito:"Mostrar el origen de la monarquía israelita, las consecuencias del rechazo a Dios como Rey, y el ascenso del linaje mesiánico.", versiculo:"Jehová no mira lo que mira el hombre; pues el hombre mira lo que está delante de sus ojos, pero Jehová mira el corazón.", ref:"1 Samuel 16:7" },
+    { num:10, title:"2 Samuel", subtitle:"El Libro del Reino de David", autor:"Natán y Gad (1 Cr. 29:29)", anio:"~931 a.C. (describe ~1010–970 a.C.)", dirigido:"Israel bajo el rey David.", contexto:"El reinado de David sobre todo Israel: sus victorias, su pecado con Betsabé y sus consecuencias, y el pacto davídico eterno.", cristo:"El pacto con David (2 S. 7) es el puente profético más claro hacia el Mesías. Jesús es el Hijo de David que reina eternamente (Lc. 1:32-33).", proposito:"Registrar el reinado de David y establecer el fundamento profético del linaje y el trono mesiánico.", versiculo:"Tu trono será firme para siempre delante de tu rostro, y tu reino será estable eternamente.", ref:"2 Samuel 7:16" },
+    { num:11, title:"1 Reyes", subtitle:"El Libro de la División", autor:"Jeremías o escribas del período del exilio", anio:"~562–550 a.C. (describe ~970–853 a.C.)", dirigido:"Israel y Judá en el período monárquico.", contexto:"Desde la gloria del reinado de Salomón hasta la división del reino en Israel (norte) y Judá (sur), y el ministerio de Elías.", cristo:"El templo de Salomón prefigura a Cristo como morada de Dios entre los hombres (Jn. 2:19-21). Elías prefigura a Juan el Bautista (Mt. 17:12).", proposito:"Mostrar que la prosperidad o decadencia del reino dependía de la fidelidad o infidelidad al pacto con Dios.", versiculo:"Jehová nuestro Dios es el único Jehová.", ref:"1 Reyes 8:60" },
+    { num:12, title:"2 Reyes", subtitle:"El Libro del Exilio", autor:"Jeremías o escribas del exilio", anio:"~562–550 a.C. (describe ~853–586 a.C.)", dirigido:"Israel y Judá; también a los judíos en el exilio.", contexto:"Crónica de la decadencia y caída del reino del norte (722 a.C., Asiria) y del sur (586 a.C., Babilonia). Ministerio de Eliseo.", cristo:"Eliseo realiza milagros que anticipan los de Cristo: resurrección de muertos, alimentación de multitudes, sanidad del leproso Naamán.", proposito:"Mostrar las consecuencias del rechazo continuado a Dios y sus profetas, culminando en el exilio como juicio divino.", versiculo:"Y fue quitado Israel de su tierra a Asiria, hasta hoy.", ref:"2 Reyes 17:23" },
+    { num:13, title:"1 Crónicas", subtitle:"El Libro de la Genealogía y el Templo", autor:"Esdras (tradición judía)", anio:"~450–430 a.C.", dirigido:"Los judíos que regresan del exilio babilónico.", contexto:"Postexilio: el pueblo regresa y necesita reafirmar su identidad, su linaje davídico y la centralidad del templo y el culto.", cristo:"El énfasis en el linaje de David señala al Mesías davídico. David como preparador del templo prefigura a Cristo como edificador de la Iglesia.", proposito:"Reafirmar la identidad nacional y espiritual de Israel, centrar la adoración en el templo y en el linaje davídico.", versiculo:"Busca a Jehová y su poder; busca su rostro continuamente.", ref:"1 Crónicas 16:11" },
+    { num:14, title:"2 Crónicas", subtitle:"El Libro de los Reyes de Judá", autor:"Esdras (tradición judía)", anio:"~450–430 a.C.", dirigido:"Los judíos postexílicos que necesitan restaurar la fe y la identidad.", contexto:"Narra desde Salomón hasta el decreto de Ciro, enfocándose en los reyes de Judá y la importancia del templo y la adoración.", cristo:"El templo como lugar de la presencia de Dios apunta a Cristo como Emmanuel, Dios con nosotros. Los reyes fieles son tipos del Rey perfecto.", proposito:"Mostrar que la bendición o el juicio del pueblo dependía de su relación con Dios y la adoración en el templo.", versiculo:"Si se humillare mi pueblo... y oraren... yo oiré desde los cielos.", ref:"2 Crónicas 7:14" },
+    { num:15, title:"Esdras", subtitle:"El Libro del Regreso", autor:"Esdras", anio:"~450–440 a.C.", dirigido:"Los judíos que regresan del exilio y necesitan restaurar su vida espiritual.", contexto:"El retorno del exilio babilónico en dos etapas: con Zorobabel (538 a.C.) para reconstruir el templo, y con Esdras (458 a.C.) para restaurar la Ley.", cristo:"La restauración del pueblo prefigura la restauración espiritual que trae Cristo. El templo reconstruido señala al verdadero templo que es Cristo.", proposito:"Narrar el regreso del exilio y la restauración del templo y la obediencia a la Ley de Dios.", versiculo:"La mano de Jehová su Dios estaba sobre él, porque Esdras había preparado su corazón para inquirir la Ley.", ref:"Esdras 7:9-10" },
+    { num:16, title:"Nehemías", subtitle:"El Libro de la Reconstrucción", autor:"Nehemías (con aporte de Esdras)", anio:"~430–420 a.C.", dirigido:"Los judíos en Jerusalén postexílica.", contexto:"Nehemías, copero del rey Artajerjes, regresa a Jerusalén para reconstruir los muros en solo 52 días, en medio de oposición y peligros.", cristo:"Nehemías como siervo-líder que reconstruye y protege a su pueblo es tipo de Cristo como pastor y guardián de la Iglesia.", proposito:"Mostrar la reconstrucción de Jerusalén y la renovación espiritual del pueblo bajo el liderazgo de la oración y la acción.", versiculo:"El gozo de Jehová es vuestra fuerza.", ref:"Nehemías 8:10" },
+    { num:17, title:"Ester", subtitle:"El Libro de la Providencia", autor:"Desconocido (posiblemente Mardoqueo o Esdras)", anio:"~483–479 a.C. (escrito ~400 a.C.)", dirigido:"Los judíos en la diáspora persa.", contexto:"Durante el reinado de Asuero (Jerjes I) de Persia. La comunidad judía en la diáspora amenazada de exterminio es salvada por Ester y Mardoqueo.", cristo:"Aunque Dios no es mencionado explícitamente, su providencia es central. Ester intercede por su pueblo como Cristo intercede por nosotros ante el Padre.", proposito:"Mostrar la fidelidad de Dios para preservar a su pueblo aunque las circunstancias parezcan contrarias, e instituir la fiesta de Purim.", versiculo:"¿Y quién sabe si para esta hora has llegado al reino?", ref:"Ester 4:14" },
+  ],
+  poeticos: [
+    { num:18, title:"Job", subtitle:"El Libro del Sufrimiento", autor:"Desconocido (posiblemente Job o Moisés)", anio:"~2000–1500 a.C. (uno de los libros más antiguos)", dirigido:"Todo ser humano que enfrenta sufrimiento incomprensible.", contexto:"Período patriarcal. Un hombre justo sufre pérdidas extremas. Sus amigos debaten la causa. Dios responde desde el torbellino.", cristo:"Job prefigura a Cristo como el Justo que sufre sin culpa. La declaración «mi Redentor vive» es una de las más claras afirmaciones mesiánicas del AT.", proposito:"Abordar la teología del sufrimiento, refutar la idea de retribución automática y revelar la soberanía de Dios sobre toda circunstancia.", versiculo:"Yo sé que mi Redentor vive, y al fin se levantará sobre el polvo.", ref:"Job 19:25" },
+    { num:19, title:"Salmos", subtitle:"El Libro de la Adoración", autor:"David (principal), Asaf, Coré, Salomón, Moisés, Etán", anio:"~1440–430 a.C. (compilación en varias etapas)", dirigido:"El pueblo de Israel; toda la humanidad creyente.", contexto:"Cubre toda la historia de Israel. Hymnario oficial del templo; expresa toda la gama de emociones humanas ante Dios.", cristo:"Numerosos Salmos son mesiánicos directos: Sal. 2 (Rey mesiánico), Sal. 22 (crucifixión), Sal. 110 (sacerdocio eterno), Sal. 16 (resurrección). Jesús citó los Salmos extensamente.", proposito:"Proveer un libro de himnos y oraciones para la adoración pública y privada, cubriendo alabanza, lamento, acción de gracias y petición.", versiculo:"Jehová es mi pastor; nada me faltará.", ref:"Salmos 23:1" },
+    { num:20, title:"Proverbios", subtitle:"El Libro de la Sabiduría Práctica", autor:"Salomón (principal), Agur y el rey Lemuel", anio:"~971–700 a.C.", dirigido:"Jóvenes israelitas en formación; toda persona que busca vivir con prudencia.", contexto:"Israel bajo la monarquía. Compendio de sabiduría para la vida cotidiana: familia, trabajo, dinero, amistad, integridad.", cristo:"La Sabiduría personificada en Proverbios 8 es identificada por los teólogos con Cristo como Logos (Jn. 1:1; 1 Co. 1:30).", proposito:"Instruir en la sabiduría práctica para una vida íntegra, basada en el temor de Dios como fundamento.", versiculo:"El principio de la sabiduría es el temor de Jehová.", ref:"Proverbios 1:7" },
+    { num:21, title:"Eclesiastés", subtitle:"El Libro de la Búsqueda del Sentido", autor:"El Predicador (Qohelet), identificado con Salomón", anio:"~935 a.C.", dirigido:"Todo ser humano que busca sentido en los placeres, el trabajo o el conocimiento humano.", contexto:"Israel monárquico. Un hombre sabio examina la vida «debajo del sol» — sin Dios — y concluye que todo es vanidad.", cristo:"Muestra la insuficiencia de todo sin Dios, apuntando a Cristo como el que da verdadero sentido y plenitud de vida (Jn. 10:10).", proposito:"Demostrar que la vida sin Dios es vacía y que la verdadera satisfacción solo se encuentra en la reverencia y obediencia a Él.", versiculo:"El fin de todo el discurso es este: Teme a Dios y guarda sus mandamientos, porque esto es el todo del hombre.", ref:"Eclesiastés 12:13" },
+    { num:22, title:"Cantares", subtitle:"El Libro del Amor", autor:"Salomón", anio:"~965 a.C.", dirigido:"Parejas casadas; la Iglesia como esposa de Cristo.", contexto:"Israel bajo el reinado de Salomón. Poema dramático que celebra el amor conyugal y es leído alegóricamente como el amor entre Dios e Israel / Cristo y la Iglesia.", cristo:"El amor del novio por la novia es tipo del amor de Cristo por su Iglesia (Ef. 5:25-32). Pablo usa esta imagen explícitamente.", proposito:"Celebrar el amor conyugal como don de Dios y revelar alegóricamente la profundidad del amor de Dios por su pueblo.", versiculo:"Yo soy de mi amado, y mi amado es mío.", ref:"Cantares 6:3" },
+  ],
+  profetasMayores: [
+    { num:23, title:"Isaías", subtitle:"El Evangelio del Antiguo Testamento", autor:"Isaías hijo de Amoz", anio:"~740–680 a.C.", dirigido:"Judá y Jerusalén; también a todas las naciones (Is. 49:6).", contexto:"Judá bajo el reinado de cuatro reyes (Uzías a Ezequías). Amenaza asiria, idolatría y promesas de restauración. El libro más citado en el NT.", cristo:"Es el libro más cristológico del AT: el siervo sufriente (Is. 53), el nacimiento virginal (7:14), el ungido (61:1-2). Jesús leyó de Isaías en la sinagoga (Lc. 4).", proposito:"Llamar a Judá al arrepentimiento, anunciar el juicio y la restauración futura, y revelar proféticamente al Mesías sufriente y glorioso.", versiculo:"He aquí que la virgen concebirá, y dará a luz un hijo, y llamará su nombre Emanuel.", ref:"Isaías 7:14" },
+    { num:24, title:"Jeremías", subtitle:"El Libro del Profeta Llorón", autor:"Jeremías, con ayuda de Baruc (escriba)", anio:"~627–585 a.C.", dirigido:"El pueblo de Judá antes y durante el exilio.", contexto:"Declive y caída de Judá. Jeremías ministra durante los últimos cinco reyes antes del exilio babilónico. Sufre rechazo y persecución.", cristo:"El nuevo pacto (Jr. 31:31-34) es la promesa más directa de la obra de Cristo. Jeremías, el profeta rechazado y sufriente, prefigura a Cristo.", proposito:"Llamar a Judá al arrepentimiento, anunciar el juicio del exilio y revelar la promesa del nuevo pacto en el Mesías.", versiculo:"Porque yo sé los pensamientos que tengo acerca de vosotros... pensamientos de paz y no de mal.", ref:"Jeremías 29:11" },
+    { num:25, title:"Lamentaciones", subtitle:"El Libro del Duelo", autor:"Jeremías", anio:"~586 a.C. (inmediatamente tras la caída de Jerusalén)", dirigido:"Los sobrevivientes de Jerusalén y todos los que lloran la desolación.", contexto:"Jerusalén ha caído, el templo está destruido y el pueblo ha sido llevado al exilio. Cinco poemas de luto por la ciudad.", cristo:"El llanto de Jeremías por Jerusalén prefigura el llanto de Jesús (Lc. 19:41). Muestra que Dios no abandona a su pueblo aun en el juicio.", proposito:"Expresar el profundo dolor por la destrucción de Jerusalén, reconocer que fue consecuencia del pecado y aferrar la esperanza en la fidelidad de Dios.", versiculo:"Las misericordias de Jehová nunca se agotan; nuevas son cada mañana; grande es tu fidelidad.", ref:"Lamentaciones 3:22-23" },
+    { num:26, title:"Ezequiel", subtitle:"El Libro de la Visión y la Restauración", autor:"Ezequiel, sacerdote-profeta", anio:"~593–571 a.C.", dirigido:"Los judíos exiliados en Babilonia.", contexto:"Ezequiel ministra a los judíos deportados en Babilonia. Usa visiones simbólicas dramáticas para anunciar juicio sobre Jerusalén y restauración futura.", cristo:"La visión del pastor que busca a las ovejas (Ez. 34) apunta a Cristo como el Buen Pastor. El templo glorioso de Ez. 40-48 señala al Cristo que mora con su pueblo.", proposito:"Explicar las causas del exilio, consolar a los desterrados con la promesa de restauración nacional y espiritual, y revelar la gloria futura.", versiculo:"Les daré un corazón nuevo, y pondré un espíritu nuevo dentro de ellos.", ref:"Ezequiel 36:26" },
+    { num:27, title:"Daniel", subtitle:"El Libro de la Soberanía de Dios", autor:"Daniel", anio:"~605–536 a.C.", dirigido:"Los judíos exiliados en Babilonia; también a creyentes en períodos de persecución.", contexto:"Joven judío llevado al exilio en Babilonia. Sirve en la corte real manteniendo su fe. El libro contiene historias de fidelidad y visiones apocalípticas.", cristo:"El Hijo del Hombre que viene en las nubes (Dn. 7:13-14) es la visión más clara del Cristo glorificado. Las 70 semanas (Dn. 9) predicen con precisión la primera venida de Cristo.", proposito:"Mostrar que Dios es soberano sobre los imperios mundiales, animar la fidelidad en la adversidad y revelar el plan profético hasta el fin de los tiempos.", versiculo:"El Dios nuestro al que servimos puede librarnos... y si no... no adoraremos a tus dioses.", ref:"Daniel 3:17-18" },
+  ],
+  profetasMenores: [
+    { num:28, title:"Oseas", subtitle:"El Libro del Amor Fiel", autor:"Oseas", anio:"~755–715 a.C.", dirigido:"El reino del norte de Israel sumido en la idolatría.", contexto:"Israel (reino del norte) en período de prosperidad material y decadencia espiritual, próxima caída ante Asiria (722 a.C.).", cristo:"El amor de Oseas por su esposa infiel Gomer ilustra el amor de Dios (y de Cristo) por su pueblo adúltero. Oseas 11:1 es citado en Mt. 2:15 como profecía de Cristo.", proposito:"Denunciar la idolatría de Israel usando el matrimonio de Oseas como alegoría del pacto quebrantado, y proclamar el amor restaurador de Dios.", versiculo:"Y te desposaré conmigo para siempre... y conocerás a Jehová.", ref:"Oseas 2:19-20" },
+    { num:29, title:"Joel", subtitle:"El Libro del Día de Jehová", autor:"Joel hijo de Petuel", anio:"~835–796 a.C. (o postexílico, ~400 a.C.; debatido)", dirigido:"El pueblo de Judá; también la Iglesia en cumplimiento de Pentecostés.", contexto:"Una plaga de langostas devasta Judá. Joel la interpreta como preludio del Día de Jehová y llama al arrepentimiento colectivo.", cristo:"La promesa del derramamiento del Espíritu (Jl. 2:28-32) es citada por Pedro en Pentecostés (Hch. 2:17), señalando a Cristo como quien envía el Espíritu.", proposito:"Llamar al arrepentimiento ante el juicio inminente, anunciar el día del Señor y la promesa del Espíritu Santo.", versiculo:"Derramaré mi Espíritu sobre toda carne... vuestros hijos e hijas profetizarán.", ref:"Joel 2:28" },
+    { num:30, title:"Amós", subtitle:"El Libro de la Justicia Social", autor:"Amós, pastor de Tecoa", anio:"~760–750 a.C.", dirigido:"El reino del norte de Israel, especialmente sus líderes y ricos.", contexto:"Israel (norte) en apogeo bajo Jeroboam II. Gran prosperidad económica junto con extrema injusticia social e hipocresía religiosa.", cristo:"La promesa del tabernáculo caído de David (Am. 9:11-12) es citada en Hch. 15:16-17 como cumplida en Cristo y la inclusión de los gentiles.", proposito:"Denunciar la injusticia social, la opresión a los pobres y la adoración hipócrita; anunciar juicio y la restauración futura del linaje davídico.", versiculo:"Pero corra el juicio como las aguas, y la justicia como impetuoso arroyo.", ref:"Amós 5:24" },
+    { num:31, title:"Abdías", subtitle:"El Libro del Juicio a Edom", autor:"Abdías", anio:"~848–840 a.C. o ~586 a.C. (debatido)", dirigido:"Edom; también a toda nación que se opone al pueblo de Dios.", contexto:"Edom (descendientes de Esaú) celebró y se aprovechó de la caída de Jerusalén. El libro más corto del AT (21 versículos).", cristo:"La promesa de que el reino será de Jehová (Abd. 1:21) señala al reino universal de Cristo al fin de los tiempos.", proposito:"Anunciar el juicio divino contra Edom por su orgullo y su traición a Israel, y afirmar la victoria final del pueblo de Dios.", versiculo:"Como tú hiciste, se hará contigo; tu recompensa volverá sobre tu cabeza.", ref:"Abdías 1:15" },
+    { num:32, title:"Jonás", subtitle:"El Libro de la Gracia Universal", autor:"Jonás hijo de Amitai", anio:"~785–760 a.C.", dirigido:"Israel (para ampliar su visión de la gracia de Dios) y Nínive (gentiles).", contexto:"Asiria, la nación más cruel y poderosa del momento, es el destinatario del mensaje. Jonás huye, pero Dios lo redirige.", cristo:"Jesús usó a Jonás como señal de su propia muerte y resurrección: tres días en el vientre del pez como Cristo tres días en el sepulcro (Mt. 12:40).", proposito:"Mostrar que la gracia de Dios se extiende a todas las naciones, corregir el exclusivismo israelita y prefigurar la resurrección.", versiculo:"Y Dios vio lo que hicieron, que se habían convertido de su mal camino; y se arrepintió del mal que había dicho que les haría.", ref:"Jonás 3:10" },
+    { num:33, title:"Miqueas", subtitle:"El Libro del Mesías de Belén", autor:"Miqueas de Moreset", anio:"~735–700 a.C.", dirigido:"Judá, especialmente sus gobernantes corruptos.", contexto:"Contemporáneo de Isaías. Judá bajo presión asiria. Denuncia la corrupción de líderes, sacerdotes y falsos profetas.", cristo:"La profecía de Belén (Mi. 5:2) es una de las predicciones más precisas del lugar de nacimiento de Cristo. Mi. 6:8 resume la ética del reino de Dios.", proposito:"Denunciar la injusticia de líderes y falsas religiosidades, anunciar juicio y restauración, y revelar el origen del Mesías.", versiculo:"Pero tú, Belén Efrata... de ti me saldrá el que será Señor en Israel.", ref:"Miqueas 5:2" },
+    { num:34, title:"Nahúm", subtitle:"El Libro del Juicio de Nínive", autor:"Nahúm de Elcos", anio:"~663–612 a.C.", dirigido:"Judá (para consolarla) y Nínive (como sentencia).", contexto:"Asiria en su apogeo. Nahúm anuncia la destrucción definitiva de Nínive, unos 150 años después de la misión de Jonás.", cristo:"Señala a Cristo como aquel en quien se cumple la justicia divina completa. La caída de Nínive muestra que ningún poder resiste al juicio de Dios.", proposito:"Anunciar el juicio irreversible sobre Nínive y consolar a Judá con la certeza de que Dios vindica a su pueblo.", versiculo:"Jehová es tardo para la ira y grande en poder, y no tiene a nadie por inocente.", ref:"Nahúm 1:3" },
+    { num:35, title:"Habacuc", subtitle:"El Libro del Justo que Vive por Fe", autor:"Habacuc", anio:"~612–605 a.C.", dirigido:"El pueblo de Judá en crisis moral y existencial.", contexto:"Judá bajo Joacim. Habacuc cuestiona a Dios sobre la injusticia interna y luego sobre el uso de Babilonia como instrumento de juicio.", cristo:"La declaración «el justo por su fe vivirá» (Hab. 2:4) es el texto clave sobre la justificación por fe en Pablo (Ro. 1:17; Gá. 3:11) y la carta a los Hebreos.", proposito:"Abordar la crisis de fe ante la injusticia y el sufrimiento, y concluir en la confianza soberana en Dios a pesar de las circunstancias.", versiculo:"El justo por su fe vivirá.", ref:"Habacuc 2:4" },
+    { num:36, title:"Sofonías", subtitle:"El Libro del Remanente Fiel", autor:"Sofonías, descendiente de Ezequías", anio:"~640–621 a.C.", dirigido:"Judá y las naciones vecinas; también el remanente fiel.", contexto:"Judá bajo el rey Josías, antes de la reforma religiosa. Amplia corrupción religiosa y moral. Sofonías anuncia el Día de Jehová.", cristo:"La imagen de Dios que canta sobre su pueblo (Sof. 3:17) señala al amor de Cristo por su Iglesia. El remanente que es preservado tipifica a la Iglesia.", proposito:"Anunciar el Día de Jehová como juicio universal, llamar al arrepentimiento y prometer la restauración de un pueblo humilde y fiel.", versiculo:"Jehová está en medio de ti... él se gozará sobre ti con alegría; callará de amor, se regocijará sobre ti con cánticos.", ref:"Sofonías 3:17" },
+    { num:37, title:"Hageo", subtitle:"El Libro de la Casa de Dios", autor:"Hageo", anio:"~520 a.C.", dirigido:"Los judíos que regresan a Judá bajo el liderazgo de Zorobabel y Josué el sacerdote.", contexto:"Postexilio: los judíos han regresado pero priorizan sus casas sobre el templo. Hageo los confronta y los motiva a reconstruir.", cristo:"La promesa de que la gloria de la segunda casa superará a la primera (Hag. 2:9) apunta a Cristo, cuya presencia es la gloria verdadera del templo.", proposito:"Motivar al pueblo a priorizar la obra de Dios, reconstruir el templo y confiar en que Dios honrará su obediencia.", versiculo:"Edifique la casa, y pondré mi voluntad en ella, y seré glorificado.", ref:"Hageo 1:8" },
+    { num:38, title:"Zacarías", subtitle:"El Libro de las Visiones Mesiánicas", autor:"Zacarías hijo de Berequías", anio:"~520–480 a.C.", dirigido:"Los judíos postexílicos; también señala a las naciones.", contexto:"Postexilio, contemporáneo de Hageo. Ocho visiones nocturnas y mensajes proféticos animan la reconstrucción y apuntan al Mesías.", cristo:"Es el libro más mesiánico de los Profetas Menores: entrada triunfal (9:9), 30 piezas de plata (11:12-13), traspasado (12:10), heridas en sus manos (13:6). Jesús citó a Zacarías.", proposito:"Animar al pueblo a reconstruir el templo, revelar mediante visiones el plan redentor de Dios y anunciar con detalle la venida del Mesías.", versiculo:"He aquí tu rey vendrá a ti, justo y salvador, humilde, y cabalgando sobre un asno.", ref:"Zacarías 9:9" },
+    { num:39, title:"Malaquías", subtitle:"El Libro del Último Profeta", autor:"Malaquías ('mi mensajero')", anio:"~430–400 a.C.", dirigido:"La comunidad judía postexílica desilusionada y fría espiritualmente.", contexto:"Postexilio tardío. El pueblo ha regresado pero hay apatía espiritual: sacerdotes corruptos, matrimonios mixtos, diezmos retenidos y escepticismo.", cristo:"La promesa del mensajero que prepara el camino (Mal. 3:1) y el regreso de Elías (Mal. 4:5) señalan a Juan el Bautista y a Cristo. Malaquías cierra el AT apuntando al NT.", proposito:"Confrontar la frialdad espiritual y la hipocresía religiosa, y concluir con la promesa del sol de justicia (Cristo) que vendrá con sanidad en sus alas.", versiculo:"He aquí, yo envío mi mensajero, el cual preparará el camino delante de mí.", ref:"Malaquías 3:1" },
+  ],
+  evangelios: [
+    { num:1, title:"Mateo", subtitle:"El Evangelio del Rey Mesías", autor:"Mateo (Leví), apóstol y exrecaudador de impuestos", anio:"~50–70 d.C.", dirigido:"Judíos creyentes y comunidades judeocristianas.", contexto:"Escrito en el contexto del judaísmo del primer siglo. La comunidad judía esperaba al Mesías. El libro abunda en citas del AT para demostrar que Jesús las cumple.", cristo:"Jesús es presentado como el Rey davídico y Mesías prometido. El Sermón del Monte (Mt. 5-7) lo muestra como el nuevo Moisés que da la Ley del Reino.", proposito:"Demostrar que Jesús es el Mesías judío prometido en el AT y proclamar las enseñanzas del Reino de los Cielos.", versiculo:"Todo esto aconteció para que se cumpliese lo dicho por el Señor por medio del profeta.", ref:"Mateo 1:22" },
+    { num:2, title:"Marcos", subtitle:"El Evangelio del Siervo Activo", autor:"Juan Marcos, bajo la influencia de Pedro", anio:"~55–65 d.C.", dirigido:"Gentiles romanos y toda audiencia no judía.", contexto:"Escrito para una audiencia romana. Roma valoraba la acción y los hechos más que los discursos. El Evangelio más breve y dinámico: usa frecuentemente la palabra «enseguida».", cristo:"Jesús es el Siervo de Jehová (Is. 53) en acción. No hay genealogía (los siervos no necesitan linaje). El énfasis está en los milagros y la obra redentora.", proposito:"Presentar a Jesús como el poderoso Hijo de Dios que actúa con autoridad divina para traer la salvación.", versiculo:"Porque el Hijo del Hombre no vino para ser servido, sino para servir, y para dar su vida en rescate por muchos.", ref:"Marcos 10:45" },
+    { num:3, title:"Lucas", subtitle:"El Evangelio del Hijo del Hombre", autor:"Lucas, médico y compañero de Pablo", anio:"~60–62 d.C.", dirigido:"Teófilo y el mundo greco-romano; énfasis en gentiles, pobres y marginados.", contexto:"Escrito para el mundo greco-romano culto. Lucas es el único gentil autor del NT. Énfasis en la humanidad de Jesús, los marginados, las mujeres y el Espíritu Santo.", cristo:"Jesús es presentado como el Hijo del Hombre perfecto, cumplimiento del ideal humano. Su genealogía llega hasta Adán, mostrando su conexión con toda la humanidad.", proposito:"Presentar un relato ordenado y confiable de la vida de Jesús, destacando su gracia hacia todos los seres humanos sin distinción.", versiculo:"Porque el Hijo del Hombre vino a buscar y a salvar lo que se había perdido.", ref:"Lucas 19:10" },
+    { num:4, title:"Juan", subtitle:"El Evangelio del Hijo de Dios", autor:"Juan, apóstol amado, hijo de Zebedeo", anio:"~85–95 d.C.", dirigido:"La Iglesia universal, especialmente frente a herejes que negaban la divinidad de Cristo.", contexto:"Escrito tardíamente para combatir el proto-gnosticismo que negaba la encarnación. Teológicamente el más profundo de los cuatro Evangelios.", cristo:"Jesús es el Logos eterno (Jn. 1:1), el Dios encarnado. Los siete «Yo soy» revelan su divinidad. El propósito está explícito: creer que Jesús es el Cristo, el Hijo de Dios (Jn. 20:31).", proposito:"Demostrar la plena divinidad de Jesucristo y llamar a la fe salvadora en Él como único camino a la vida eterna.", versiculo:"Porque de tal manera amó Dios al mundo, que ha dado a su Hijo unigénito, para que todo aquel que en él cree no se pierda, sino que tenga vida eterna.", ref:"Juan 3:16" },
+  ],
+  hechos: [
+    { num:5, title:"Hechos de los Apóstoles", subtitle:"El Libro de la Iglesia Primitiva", autor:"Lucas, médico y compañero de Pablo", anio:"~62–64 d.C.", dirigido:"Teófilo y toda la Iglesia que necesita conocer sus raíces y el modelo apostólico.", contexto:"Desde Pentecostés (~30 d.C.) hasta el primer encarcelamiento de Pablo en Roma (~62 d.C.). La Iglesia nace, se expande y enfrenta persecución.", cristo:"Cristo es el protagonista invisible: actúa a través del Espíritu Santo en la Iglesia. El libro describe cómo la resurrección de Cristo transforma el mundo.", proposito:"Narrar el nacimiento y expansión de la Iglesia desde Jerusalén hasta Roma, mostrando el Espíritu Santo como agente principal de la misión.", versiculo:"Pero recibiréis poder, cuando haya venido sobre vosotros el Espíritu Santo, y me seréis testigos en Jerusalén, en toda Judea, en Samaria, y hasta lo último de la tierra.", ref:"Hechos 1:8" },
+  ],
+  paulinas: [
+    { num:6, title:"Romanos", subtitle:"La Gran Carta del Evangelio", autor:"Pablo, apóstol", anio:"~57 d.C. (desde Corinto)", dirigido:"La iglesia de Roma, compuesta por judíos y gentiles.", contexto:"Pablo escribe a la iglesia en Roma antes de visitarla. Exposición más completa y sistemática del evangelio en el NT: pecado, justificación, santificación y glorificación.", cristo:"Cristo es el fundamento de toda la teología de Romanos: su muerte y resurrección son la base de la justificación (Ro. 3-5), y su vida en nosotros es la fuente de santificación (Ro. 6-8).", proposito:"Exponer de forma completa el evangelio de la justificación por fe, la santificación y el plan de Dios para Israel y las naciones.", versiculo:"No me avergüenzo del evangelio, porque es poder de Dios para salvación a todo aquel que cree.", ref:"Romanos 1:16" },
+    { num:7, title:"1 Corintios", subtitle:"El Libro de la Iglesia en Conflicto", autor:"Pablo, apóstol", anio:"~55 d.C. (desde Éfeso)", dirigido:"La iglesia de Corinto y todas las iglesias con problemas de unidad y madurez.", contexto:"La iglesia de Corinto era rica, cosmopolita y mundana. Enfrentaba divisiones, inmoralidad, problemas de matrimonio, dones espirituales y la resurrección.", cristo:"Cristo crucificado es el centro del mensaje (1 Co. 1:23). El capítulo 15 es la defensa más completa de la resurrección de Cristo en el NT.", proposito:"Corregir los errores doctrinales y prácticos de la iglesia en Corinto y llamar a la madurez y la unidad.", versiculo:"Porque nadie puede poner otro fundamento que el que está puesto, el cual es Jesucristo.", ref:"1 Corintios 3:11" },
+    { num:8, title:"2 Corintios", subtitle:"El Libro del Ministerio Auténtico", autor:"Pablo, apóstol", anio:"~56 d.C. (desde Macedonia)", dirigido:"La iglesia de Corinto que cuestionaba la autoridad de Pablo.", contexto:"Pablo defiende su apostolado ante falsos maestros que lo cuestionaban. La carta más personal y autobiográfica de Pablo.", cristo:"Cristo es el estándar del sufrimiento y la gloria del ministerio. Pablo describe al ministerio como la manifestación del aroma de Cristo (2 Co. 2:15).", proposito:"Defender la autenticidad del ministerio apostólico, corregir a los falsos apóstoles y enseñar sobre el servicio cristiano genuino.", versiculo:"Bástate mi gracia; porque mi poder se perfecciona en la debilidad.", ref:"2 Corintios 12:9" },
+    { num:9, title:"Gálatas", subtitle:"El Libro de la Libertad en Cristo", autor:"Pablo, apóstol", anio:"~48–49 d.C. (una de las epístolas más tempranas)", dirigido:"Las iglesias de Galacia infiltradas por el legalismo judaizante.", contexto:"Judaizantes insistían en que los gentiles debían circuncidarse y guardar la Ley para ser salvos. Pablo responde con la defensa más apasionada de la gracia.", cristo:"Cristo nos redimió de la maldición de la Ley (Gá. 3:13). La salvación es por fe en Cristo, no por obras de la Ley. Cristo vive en el creyente (Gá. 2:20).", proposito:"Defender el evangelio de la gracia contra el legalismo y afirmar que la justificación es por fe en Cristo solamente.", versiculo:"Estad, pues, firmes en la libertad con que Cristo nos hizo libres, y no estéis otra vez sujetos al yugo de esclavitud.", ref:"Gálatas 5:1" },
+    { num:10, title:"Efesios", subtitle:"El Libro de las Riquezas en Cristo", autor:"Pablo, apóstol (desde la prisión en Roma)", anio:"~60–62 d.C.", dirigido:"Las iglesias de Éfeso y Asia Menor; toda la Iglesia universal.", contexto:"Carta circular para las iglesias de Asia Menor. No aborda problemas específicos sino que expone las riquezas espirituales del creyente y el misterio de la Iglesia.", cristo:"Cristo es la cabeza del cuerpo que es la Iglesia (Ef. 1:22-23). En Él tenemos toda bendición espiritual. El misterio revelado es que judíos y gentiles son coherederos en Cristo.", proposito:"Revelar las riquezas espirituales del creyente en Cristo y la naturaleza de la Iglesia como cuerpo y esposa de Cristo.", versiculo:"Porque por gracia sois salvos por medio de la fe; y esto no de vosotros, pues es don de Dios.", ref:"Efesios 2:8" },
+    { num:11, title:"Filipenses", subtitle:"El Libro del Gozo en Cristo", autor:"Pablo, apóstol (desde la prisión en Roma)", anio:"~61–62 d.C.", dirigido:"La iglesia de Filipos, amada y fiel.", contexto:"La iglesia de Filipos era la favorita de Pablo: fiel, generosa y unida. Pablo escribe con gratitud desde la prisión, rebosante de gozo.", cristo:"El himno cristológico de Fil. 2:5-11 es uno de los textos más altos sobre la persona de Cristo: su encarnación, humillación y exaltación.", proposito:"Expresar gratitud, llamar a la unidad y al gozo, y presentar a Cristo como el modelo supremo de humildad y servicio.", versiculo:"Todo lo puedo en Cristo que me fortalece.", ref:"Filipenses 4:13" },
+    { num:12, title:"Colosenses", subtitle:"El Libro de la Supremacía de Cristo", autor:"Pablo, apóstol (desde la prisión en Roma)", anio:"~60–62 d.C.", dirigido:"La iglesia de Colosas amenazada por el sincretismo y el gnosticismo naciente.", contexto:"La iglesia de Colosas era tentada por una filosofía sincretista que mezclaba el evangelio con rituales, ángeles y ascetismo. Pablo responde con la supremacía absoluta de Cristo.", cristo:"Cristo es la imagen del Dios invisible, el primogénito de toda creación, y en Él todas las cosas subsisten (Col. 1:15-17). Es todo y en todos (Col. 3:11).", proposito:"Defender la supremacía y suficiencia absoluta de Cristo contra toda filosofía o tradición humana que lo desplace.", versiculo:"Porque en él habita corporalmente toda la plenitud de la Deidad.", ref:"Colosenses 2:9" },
+    { num:13, title:"1 Tesalonicenses", subtitle:"El Libro de la Segunda Venida", autor:"Pablo, apóstol", anio:"~50–51 d.C. (una de las epístolas más antiguas)", dirigido:"La iglesia joven de Tesalónica.", contexto:"Iglesia joven en Tesalónica, fundada apenas meses antes. Los creyentes tenían dudas sobre los muertos en Cristo y el regreso del Señor.", cristo:"Cristo como el que viene (parusía) es el gran tema. Su regreso es la esperanza viva que consuela a los que lloran a sus muertos en Cristo.", proposito:"Fortalecer a una iglesia joven, responder sus preguntas sobre la Segunda Venida y animar a una vida santa en espera del regreso de Cristo.", versiculo:"Porque el Señor mismo con voz de mando... descenderá del cielo.", ref:"1 Tesalonicenses 4:16" },
+    { num:14, title:"2 Tesalonicenses", subtitle:"El Libro del Día del Señor", autor:"Pablo, apóstol", anio:"~51 d.C.", dirigido:"La iglesia de Tesalónica confundida por falsas enseñanzas sobre el fin.", contexto:"Escrita poco después de la primera. Algunos creían que el Día del Señor ya había llegado y dejaban de trabajar. Pablo corrige este error escatológico.", cristo:"Cristo vendrá a juzgar a los que no obedecen el evangelio y a ser glorificado en sus santos (2 Ts. 1:10). El anticristo será destruido por el aliento de su boca.", proposito:"Corregir errores sobre el Día del Señor, describir señales que preceden al fin y llamar a la perseverancia y el trabajo fiel.", versiculo:"Que no os dejéis mover fácilmente de vuestro modo de pensar, ni os conturbéis... como que el día del Señor está cerca.", ref:"2 Tesalonicenses 2:2" },
+    { num:15, title:"1 Timoteo", subtitle:"El Libro del Orden en la Iglesia", autor:"Pablo, apóstol", anio:"~62–64 d.C.", dirigido:"Timoteo como líder pastoral en Éfeso; también a pastores y líderes.", contexto:"Pablo deja a Timoteo al frente de la iglesia de Éfeso para corregir falsos maestros y organizar la vida congregacional.", cristo:"Cristo es el único mediador entre Dios y los hombres (1 Ti. 2:5). El gran misterio de la piedad es Cristo manifestado en carne (1 Ti. 3:16).", proposito:"Instruir a Timoteo en el liderazgo pastoral, los requisitos de los líderes, la corrección de herejes y el orden en la adoración.", versiculo:"Esta es palabra fiel y digna de ser recibida por todos: que Cristo Jesús vino al mundo para salvar a los pecadores.", ref:"1 Timoteo 1:15" },
+    { num:16, title:"2 Timoteo", subtitle:"El Libro del Testamento Pastoral", autor:"Pablo, apóstol", anio:"~67 d.C. (última carta antes de su martirio)", dirigido:"Timoteo y todos los líderes en tiempos difíciles.", contexto:"Pablo está en su segundo encarcelamiento en Roma, aguardando la ejecución. Es su carta de despedida más personal, escrita a su hijo espiritual.", cristo:"Cristo resucitó de entre los muertos y es el juez de vivos y muertos (2 Ti. 4:1). Toda la Escritura es inspirada por Dios para equipar al hombre de Dios.", proposito:"Animar a Timoteo a perseverar en el ministerio, defender la sana doctrina y pasar el legado fiel a la siguiente generación.", versiculo:"He peleado la buena batalla, he acabado la carrera, he guardado la fe.", ref:"2 Timoteo 4:7" },
+    { num:17, title:"Tito", subtitle:"El Libro de la Iglesia en Creta", autor:"Pablo, apóstol", anio:"~63–65 d.C.", dirigido:"Tito y los líderes de las iglesias en Creta.", contexto:"Tito supervisaba las iglesias en Creta, una isla conocida por su mal carácter cultural. Pablo lo instruye sobre liderazgo y conducta cristiana.", cristo:"La gracia de Dios en Cristo es la que enseña a vivir santamente (Tit. 2:11-12). Cristo se entregó para redimirnos y purificar un pueblo para sí.", proposito:"Instruir a Tito en el establecimiento de liderazgo sano, la sana doctrina y el testimonio cristiano en una cultura hostil.", versiculo:"Aguardando la esperanza bienaventurada y la manifestación gloriosa de nuestro gran Dios y Salvador Jesucristo.", ref:"Tito 2:13" },
+    { num:18, title:"Filemón", subtitle:"El Libro de la Reconciliación", autor:"Pablo, apóstol", anio:"~60–62 d.C. (desde la prisión en Roma)", dirigido:"Filemón, creyente adinerado; también a toda la Iglesia sobre la reconciliación.", contexto:"Carta personal a Filemón, creyente de Colosas, pidiendo que reciba a su esclavo Onésimo, convertido por Pablo, como a un hermano.", cristo:"Pablo intercede por Onésimo como Cristo intercede por nosotros. La transformación del esclavo en hermano ilustra lo que Cristo hace con el pecador.", proposito:"Pedir la reconciliación entre Filemón y Onésimo, y demostrar cómo el evangelio transforma las relaciones humanas.", versiculo:"Te ruego por mi hijo Onésimo... ya no como esclavo, sino como... hermano amado.", ref:"Filemón 1:10-16" },
+  ],
+  generales: [
+    { num:19, title:"Hebreos", subtitle:"El Libro de la Superioridad de Cristo", autor:"Desconocido (posiblemente Pablo, Apolos, Bernabé o Priscila)", anio:"~64–68 d.C.", dirigido:"Creyentes de trasfondo judío en peligro de apostatar.", contexto:"Escrito a judíos creyentes tentados a regresar al judaísmo por la persecución. El autor demuestra que Cristo es superior a todo lo del Antiguo Pacto.", cristo:"Es el libro más cristológico del NT: Cristo es superior a los ángeles, a Moisés, al sacerdocio levítico. Es nuestro Sumo Sacerdote eterno según el orden de Melquisedec.", proposito:"Demostrar la superioridad absoluta de Cristo y del Nuevo Pacto sobre el Antiguo, y llamar a la perseverancia en la fe.", versiculo:"Jesucristo es el mismo ayer, y hoy, y por los siglos.", ref:"Hebreos 13:8" },
+    { num:20, title:"Santiago", subtitle:"El Libro de la Fe que Obra", autor:"Santiago, hermano del Señor y líder de la iglesia de Jerusalén", anio:"~44–49 d.C. (posiblemente la epístola más antigua del NT)", dirigido:"Judíos creyentes dispersos por la persecución.", contexto:"Escrito a judíos creyentes dispersos en la diáspora. Muy práctico y ético, similar al libro de Proverbios en estilo.", cristo:"Cristo no es mencionado extensamente, pero Santiago lo llama «Señor de gloria» (Stg. 2:1). La ética del libro refleja las enseñanzas del Sermón del Monte.", proposito:"Llamar a la fe activa y práctica, corregir el favoritismo, la lengua descontrolada y la doble mente, y mostrar que la fe genuina produce obras.", versiculo:"Así también la fe, si no tiene obras, es muerta en sí misma.", ref:"Santiago 2:17" },
+    { num:21, title:"1 Pedro", subtitle:"El Libro de la Esperanza en el Sufrimiento", autor:"Pedro, apóstol", anio:"~62–64 d.C. (desde Roma, llamada «Babilonia»)", dirigido:"Creyentes dispersos en Asia Menor bajo persecución.", contexto:"Los creyentes en Asia Menor sufrían persecución creciente bajo el Imperio Romano. Pedro los anima a mantenerse firmes.", cristo:"Cristo es la piedra viva rechazada que se convirtió en piedra angular (1 P. 2:4-7). Su sufrimiento es el modelo y la base de la esperanza del creyente.", proposito:"Animar a los creyentes que sufren persecución a mantenerse firmes, vivir santamente y confiar en la soberanía de Dios.", versiculo:"Vosotros también, como piedras vivas, sed edificados como casa espiritual y sacerdocio santo.", ref:"1 Pedro 2:5" },
+    { num:22, title:"2 Pedro", subtitle:"El Libro de la Guardia contra el Error", autor:"Pedro, apóstol", anio:"~65–68 d.C. (poco antes de su martirio)", dirigido:"La Iglesia en general, amenazada por falsos maestros.", contexto:"Carta de despedida de Pedro. La amenaza principal ya no es la persecución externa sino los falsos maestros internos. Énfasis en el conocimiento verdadero.", cristo:"Cristo es el Señor y Salvador cuya venida es cierta (2 P. 3:10). La transfiguración es testimonio de su gloria divina (2 P. 1:16-18).", proposito:"Llamar al crecimiento espiritual, alertar sobre los falsos maestros y afirmar la certeza del regreso de Cristo y el juicio final.", versiculo:"Antes bien, creced en la gracia y el conocimiento de nuestro Señor y Salvador Jesucristo.", ref:"2 Pedro 3:18" },
+    { num:23, title:"1 Juan", subtitle:"El Libro del Amor y la Certeza", autor:"Juan, apóstol", anio:"~85–95 d.C.", dirigido:"Los creyentes amenazados por el gnosticismo y el docetismo.", contexto:"Escrito para combatir el docetismo (que negaba que Cristo vino en carne). Juan enfatiza la realidad de la encarnación y la certeza de la salvación.", cristo:"Cristo vino en carne (1 Jn. 4:2), es la propiciación por nuestros pecados (1 Jn. 2:2) y el Hijo eterno de Dios. La comunión con Él define la vida cristiana.", proposito:"Dar certeza de la salvación, combatir herejías sobre la persona de Cristo y llamar al amor fraternal como evidencia de la vida en Dios.", versiculo:"Dios es amor, y el que permanece en amor, permanece en Dios, y Dios en él.", ref:"1 Juan 4:16" },
+    { num:24, title:"2 Juan", subtitle:"El Libro de la Verdad y el Amor", autor:"Juan, apóstol (el anciano)", anio:"~85–95 d.C.", dirigido:"Una iglesia local («señora elegida») y sus miembros.", contexto:"Carta brevísima (13 versículos). Advierte a una congregación contra recibir a falsos maestros que niegan la encarnación de Cristo.", cristo:"Permanecer en la doctrina de Cristo es la prueba central. Quien niega la encarnación no tiene a Dios.", proposito:"Llamar a caminar en amor y en verdad, y proteger a la iglesia de los engañadores que niegan la encarnación de Cristo.", versiculo:"Cualquiera que se extravía y no persevera en la doctrina de Cristo, no tiene a Dios.", ref:"2 Juan 1:9" },
+    { num:25, title:"3 Juan", subtitle:"El Libro de la Hospitalidad Cristiana", autor:"Juan, apóstol (el anciano)", anio:"~85–95 d.C.", dirigido:"Gayo, un creyente fiel en una iglesia local.", contexto:"Carta personal (15 versículos) a Gayo, elogiando su hospitalidad con los misioneros itinerantes y contrastándolo con Diótrefes, que abusaba su posición.", cristo:"Aunque no menciona a Cristo explícitamente, el estilo de vida de Gayo de servicio y hospitalidad refleja el carácter de Cristo.", proposito:"Animar la hospitalidad y el servicio a los misioneros, denunciar el abuso de autoridad y promover el testimonio del bien.", versiculo:"No hay mayor gozo que este: oír que mis hijos andan en la verdad.", ref:"3 Juan 1:4" },
+    { num:26, title:"Judas", subtitle:"El Libro de la Defensa de la Fe", autor:"Judas, hermano del Señor (y de Santiago)", anio:"~65–80 d.C.", dirigido:"Creyentes amenazados por la infiltración de falsos maestros libertinos.", contexto:"Carta urgente escrita ante la infiltración de hombres impíos en las iglesias que distorsionaban la gracia en libertinaje.", cristo:"Judas llama a «guardar en el amor de Dios» y a esperar la misericordia de Jesucristo (Jud. 1:21). Cristo es el único que puede guardar al creyente sin caída.", proposito:"Alertar sobre los falsos maestros que usan la gracia como pretexto para el libertinaje y llamar a defender la fe apostólica.", versiculo:"Contended ardientemente por la fe que ha sido una vez dada a los santos.", ref:"Judas 1:3" },
+  ],
+  apocalipsis: [
+    { num:27, title:"Apocalipsis", subtitle:"El Libro del Triunfo de Cristo", autor:"Juan, apóstol (en el destierro en Patmos)", anio:"~95–96 d.C. (durante el reinado de Domiciano)", dirigido:"Las siete iglesias de Asia Menor; toda la Iglesia en tiempos de persecución.", contexto:"La Iglesia sufre persecución severa bajo el Imperio Romano. Juan recibe visiones en la isla de Patmos que revelan el fin de la historia y el triunfo de Cristo.", cristo:"Cristo es el Cordero que fue inmolado y que es digno de recibir todo honor y gloria (Ap. 5). Es el Rey de reyes y Señor de señores que regresa a juzgar y reinar. La Biblia termina con Cristo en el centro.", proposito:"Consolar a la Iglesia perseguida revelando el triunfo final de Cristo, el juicio de Babilonia (el sistema mundano), y la instauración del reino eterno de Dios.", versiculo:"Yo soy el Alfa y la Omega, el principio y el fin, el primero y el último.", ref:"Apocalipsis 22:13" },
+  ],
+};
+
+// ── RENDER BOOKS ──
+function renderBooks(containerId, books) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  container.innerHTML = books.map(b => `
+    <div class="accordion">
+      <button class="accordion-trigger" onclick="toggleAccordion(this)">
+        <div class="accordion-trigger-left">
+          <span class="acc-num">${String(b.num).padStart(2,'0')}</span>
+          <div>
+            <span class="acc-title">${b.title}</span>
+            <span class="acc-subtitle">${b.subtitle}</span>
+          </div>
+        </div>
+        <span class="acc-arrow">▼</span>
+      </button>
+      <div class="accordion-body">
+        <div class="meta-grid">
+          <div class="meta-item"><div class="meta-label">Autor</div><div class="meta-value">${b.autor}</div></div>
+          <div class="meta-item"><div class="meta-label">Año aproximado</div><div class="meta-value">${b.anio}</div></div>
+        </div>
+        <div class="detail-section">
+          <div class="detail-label">Contexto histórico y social</div>
+          <div class="detail-text">${b.contexto}</div>
+        </div>
+        <div class="detail-section">
+          <div class="detail-label">Dirigido a</div>
+          <div class="detail-text">${b.dirigido}</div>
+        </div>
+        <div class="detail-section">
+          <div class="detail-label">Cristo en este libro</div>
+          <div class="detail-text">${b.cristo}</div>
+        </div>
+        <div class="detail-section">
+          <div class="detail-label">Propósito central</div>
+          <div class="detail-text">${b.proposito}</div>
+        </div>
+        <div class="verse-block">
+          <div class="verse-label">Versículo clave — ${b.ref}</div>
+          <div class="verse-text">"${b.versiculo}"</div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ── ACCORDION ──
+function toggleAccordion(btn) {
+  const body = btn.nextElementSibling;
+  const isOpen = body.classList.contains('open');
+  btn.classList.toggle('open', !isOpen);
+  body.classList.toggle('open', !isOpen);
+}
+
+// ── NAVIGATION ──
+function showSection(id) {
+  document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  const section = document.getElementById(id);
+  if (section) section.classList.add('active');
+  event.preventDefault();
+  event.currentTarget.classList.add('active');
+  window.scrollTo(0,0);
+}
+
+// ── ATTENDANCE ──
+let students = JSON.parse(localStorage.getItem('gosen_students') || '[]');
+let classes = JSON.parse(localStorage.getItem('gosen_classes') || '[]');
+let attendance = JSON.parse(localStorage.getItem('gosen_attendance') || '{}');
+
+function saveData() {
+  localStorage.setItem('gosen_students', JSON.stringify(students));
+  localStorage.setItem('gosen_classes', JSON.stringify(classes));
+  localStorage.setItem('gosen_attendance', JSON.stringify(attendance));
+}
+
+function addStudent() {
+  const input = document.getElementById('new-student-input');
+  const name = input.value.trim();
+  if (!name) return;
+  students.push({ id: Date.now(), name });
+  input.value = '';
+  saveData();
+  renderAttendance();
+}
+
+function addClass() {
+  const label = document.getElementById('new-class-label').value.trim();
+  const date = document.getElementById('new-class-date').value;
+  if (!label) return;
+  classes.push({ id: Date.now(), label, date });
+  document.getElementById('new-class-label').value = '';
+  document.getElementById('new-class-date').value = '';
+  saveData();
+  renderAttendance();
+}
+
+function cycleAttendance(studentId, classId) {
+  const key = `${studentId}_${classId}`;
+  const states = [null, 'present', 'absent', 'excused'];
+  const current = attendance[key] || null;
+  const idx = states.indexOf(current);
+  const next = states[(idx + 1) % states.length];
+  if (next === null) delete attendance[key];
+  else attendance[key] = next;
+  saveData();
+  renderAttendance();
+}
+
+function removeStudent(id) {
+  students = students.filter(s => s.id !== id);
+  saveData(); renderAttendance();
+}
+
+function removeClass(id) {
+  classes = classes.filter(c => c.id !== id);
+  saveData(); renderAttendance();
+}
+
+function renderAttendance() {
+  document.getElementById('stat-estudiantes').textContent = students.length;
+  document.getElementById('stat-clases').textContent = classes.length;
+
+  const wrap = document.getElementById('attendance-table');
+  if (students.length === 0) {
+    wrap.innerHTML = '<p style="color:var(--text-light); font-size:13px; padding:12px 0;">Agrega estudiantes para comenzar.</p>';
+    return;
+  }
+
+  const symbols = { present:'✓', absent:'✗', excused:'E', null:'·' };
+  const header = classes.map(c => `
+    <th style="text-align:center; min-width:56px;">
+      <div style="font-size:11px; color:var(--text-dark); font-weight:500;">${c.label}</div>
+      ${c.date ? `<div style="font-size:10px;color:var(--text-light);">${c.date}</div>` : ''}
+      <button class="btn btn-ghost" style="font-size:10px; padding:2px 4px;" onclick="removeClass(${c.id})">×</button>
+    </th>
+  `).join('');
+
+  const rows = students.map(s => {
+    const dots = classes.map(c => {
+      const state = attendance[`${s.id}_${c.id}`] || null;
+      const sym = symbols[state] || '·';
+      return `<td style="text-align:center;"><div class="att-dot ${state||''}" onclick="cycleAttendance(${s.id},${c.id})" title="Clic para cambiar estado">${sym}</div></td>`;
+    }).join('');
+    const presentCount = classes.filter(c => attendance[`${s.id}_${c.id}`] === 'present').length;
+    const pct = classes.length > 0 ? Math.round(presentCount/classes.length*100) : 0;
+    return `
+      <tr>
+        <td>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div class="student-avatar">${s.name.charAt(0).toUpperCase()}</div>
+            <span style="font-size:14px;">${s.name}</span>
+            <button class="btn btn-ghost" style="font-size:10px;padding:2px 6px;margin-left:auto;" onclick="removeStudent(${s.id})">×</button>
+          </div>
+          <div style="margin-top:4px;">
+            <div style="font-size:11px; color:var(--text-light);">Asistencia: ${pct}%</div>
+            <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:${pct}%"></div></div>
+          </div>
+        </td>
+        ${dots}
+      </tr>`;
+  }).join('');
+
+  wrap.innerHTML = `
+    <table class="data-table">
+      <thead><tr><th style="min-width:200px;">Estudiante</th>${header}</tr></thead>
+      <tbody>${rows}</tbody>
+    </table>`;
+}
+
+// ── CLASS PREP ──
+let prepClasses = JSON.parse(localStorage.getItem('gosen_prep') || '[]');
+
+function savePrepData() {
+  localStorage.setItem('gosen_prep', JSON.stringify(prepClasses));
+}
+
+function addPrepClass() {
+  const title = document.getElementById('prep-title-input').value.trim();
+  const topic = document.getElementById('prep-topic-input').value.trim();
+  if (!title) return;
+  prepClasses.push({ id: Date.now(), title, topic, objetivos:'', materiales:'', notas:'', completada:false });
+  document.getElementById('prep-title-input').value = '';
+  document.getElementById('prep-topic-input').value = '';
+  savePrepData();
+  renderPrepClasses();
+}
+
+function togglePrepClass(id) {
+  const pc = prepClasses.find(p => p.id === id);
+  if (pc) { pc.completada = !pc.completada; savePrepData(); renderPrepClasses(); }
+}
+
+function removePrepClass(id) {
+  prepClasses = prepClasses.filter(p => p.id !== id);
+  savePrepData(); renderPrepClasses();
+}
+
+function updatePrepField(id, field, value) {
+  const pc = prepClasses.find(p => p.id === id);
+  if (pc) { pc[field] = value; savePrepData(); }
+}
+
+function renderPrepClasses() {
+  const list = document.getElementById('prep-list');
+  if (prepClasses.length === 0) {
+    list.innerHTML = '<div class="card"><p style="color:var(--text-light);font-size:13px;">Crea tu primera clase usando el formulario de arriba.</p></div>';
+    return;
+  }
+  list.innerHTML = prepClasses.map((pc, idx) => `
+    <div class="class-card">
+      <div class="class-card-header" onclick="toggleClassBody(${pc.id})">
+        <div style="display:flex; align-items:center; gap:14px;">
+          <span style="font-size:12px; color:var(--text-light);">${String(idx+1).padStart(2,'0')}</span>
+          <div>
+            <div style="font-family:'Playfair Display',serif; font-size:16px; color:var(--text-dark);">${pc.title}</div>
+            ${pc.topic ? `<div style="font-size:12px; color:var(--text-light);">${pc.topic}</div>` : ''}
+          </div>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <span class="badge ${pc.completada ? 'badge-sage' : 'badge-terra'}">${pc.completada ? 'Completada' : 'Pendiente'}</span>
+          <button class="btn btn-ghost" onclick="event.stopPropagation();togglePrepClass(${pc.id})">${pc.completada ? 'Marcar pendiente' : 'Marcar completada'}</button>
+          <button class="btn btn-ghost" onclick="event.stopPropagation();removePrepClass(${pc.id})">×</button>
+          <span style="font-size:11px; color:var(--text-light);">▼</span>
+        </div>
+      </div>
+      <div class="class-card-body" id="prep-body-${pc.id}" style="display:none;">
+        <div class="prep-grid">
+          <div class="prep-block">
+            <div class="prep-block-label">Objetivos de la clase</div>
+            <textarea class="prep-notes" placeholder="¿Qué aprenderán los estudiantes?" onchange="updatePrepField(${pc.id},'objetivos',this.value)">${pc.objetivos}</textarea>
+          </div>
+          <div class="prep-block">
+            <div class="prep-block-label">Materiales y recursos</div>
+            <textarea class="prep-notes" placeholder="Pasajes, libros, materiales de apoyo..." onchange="updatePrepField(${pc.id},'materiales',this.value)">${pc.materiales}</textarea>
+          </div>
+        </div>
+        <div class="prep-block" style="margin-top:12px;">
+          <div class="prep-block-label">Notas de preparación</div>
+          <textarea class="prep-notes" style="min-height:100px;" placeholder="Ideas, ilustraciones, preguntas para el grupo, puntos a enfatizar..." onchange="updatePrepField(${pc.id},'notas',this.value)">${pc.notas}</textarea>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function toggleClassBody(id) {
+  const body = document.getElementById(`prep-body-${id}`);
+  if (body) body.style.display = body.style.display === 'none' ? 'block' : 'none';
+}
+
+// ── INIT ──
+document.addEventListener('DOMContentLoaded', () => {
+  renderBooks('books-pentateuco', BOOKS.pentateuco);
+  renderBooks('books-historicos', BOOKS.historicos);
+  renderBooks('books-poeticos', BOOKS.poeticos);
+  renderBooks('books-profetas-mayores', BOOKS.profetasMayores);
+  renderBooks('books-profetas-menores', BOOKS.profetasMenores);
+  renderBooks('books-evangelios', BOOKS.evangelios);
+  renderBooks('books-hechos', BOOKS.hechos);
+  renderBooks('books-paulinas', BOOKS.paulinas);
+  renderBooks('books-generales', BOOKS.generales);
+  renderBooks('books-apocalipsis', BOOKS.apocalipsis);
+  renderAttendance();
+  renderPrepClasses();
+});
+</script>
+
+</body>
+</html>
